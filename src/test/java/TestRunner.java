@@ -6,7 +6,7 @@ public class TestRunner {
 
     public static void main(String[] args) {
 
-        //Result result = JUnitCore.runClasses(MyClassTest.class);
+        //Result result = JUnitCore.runClasses(com.scratch.MyClassTest.class);
         Result result = JUnitCore.runClasses(TestSuite.class);
 
         System.out.println("");

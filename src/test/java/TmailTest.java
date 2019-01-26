@@ -1,4 +1,4 @@
-import com.sun.javaws.exceptions.InvalidArgumentException;
+import com.scratch.Tmail;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -6,8 +6,8 @@ import static org.junit.Assert.*;
 
 public class TmailTest {
 
-    private String goodEmailAddress = "jim@ping23.com";
-    private String badEmailAddress = "jim@bozocom";
+    private String goodEmailAddress = "controller@ping23.com";
+    private String badEmailAddress = "controller@bozocom";
 
     @Before
     public void setUp() throws Exception {
@@ -40,7 +40,7 @@ public class TmailTest {
 
     @Test
     public void emailAddressIsValid() {
-        assertTrue(Tmail.emailAddressIsValid("jim@ping23.com"));
-        assertFalse(Tmail.emailAddressIsValid("jim@bozocom"));
+        assertTrue(Tmail.emailAddressIsValid("controller@ping23.com"));
+        assertFalse(Tmail.emailAddressIsValid("controller@bozocom"));
     }
 }

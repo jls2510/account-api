@@ -1,3 +1,6 @@
+package com.scratch;
+
+import com.scratch.MyResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.test.DeploymentContext;
 import org.glassfish.jersey.test.ServletDeploymentContext;

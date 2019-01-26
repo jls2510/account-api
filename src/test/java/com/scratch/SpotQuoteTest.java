@@ -1,3 +1,5 @@
+package com.scratch;
+
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.test.DeploymentContext;
@@ -64,7 +66,7 @@ public class SpotQuoteTest extends JerseyTest {
 
     @Override
     protected Application configure() {
-        System.out.println("SpotQuoteTest.configure()");
+        System.out.println("com.scratch.SpotQuoteTest.configure()");
         return new Application();
     }
 
@@ -84,7 +86,7 @@ public class SpotQuoteTest extends JerseyTest {
     @Test
     public void get() {
         Response response =
-                target("")
+                target("echo/Hello")
                         .request(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .get();

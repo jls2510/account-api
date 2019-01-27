@@ -5,11 +5,15 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.test.DeploymentContext;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.ServletDeploymentContext;
+import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
+import org.glassfish.jersey.test.spi.TestContainerFactory;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.mock.web.MockServletContext;
 
 import javax.servlet.ServletContext;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
@@ -65,35 +69,35 @@ public class SpotQuoteTest extends JerseyTest {
     }
 
     @Override
-    protected Application configure() {
-        System.out.println("com.scratch.SpotQuoteTest.configure()");
-        return new Application();
-    }
-
-    @Override
     protected DeploymentContext configureDeployment() {
         ServletContext servletContext = initializeServletContext();
         MyResourceConfig myResourceConfig =
-                new MyResourceConfig(servletContext) {{
-
-                }};
+                new MyResourceConfig();
 
         return ServletDeploymentContext
                 .forServlet(new ServletContainer(myResourceConfig))
                 .build();
     }
 
+    @Override
+    protected TestContainerFactory getTestContainerFactory() {
+        return new GrizzlyWebTestContainerFactory();
+    }
+
     @Test
+    //@Ignore
     public void get() {
+        System.out.println("EchoTest.get()");
+        WebTarget webTarget
+                = target("echo/Hello");
+
         Response response =
-                target("echo/Hello")
-                        .request(MediaType.APPLICATION_JSON)
+                webTarget.request(MediaType.TEXT_PLAIN)
                         .accept(MediaType.APPLICATION_JSON)
                         .get();
 
         Assert.assertEquals("Http Response should be 200: ", Response.Status.OK.getStatusCode(), response.getStatus());
         Assert.assertEquals("Http Content-Type should be: ", MediaType.APPLICATION_JSON, response.getHeaderString(HttpHeaders.CONTENT_TYPE));
-
     }
 
     /**

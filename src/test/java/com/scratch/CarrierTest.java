@@ -1,30 +1,12 @@
 package com.scratch;
 
-import com.scratch.MyResourceConfig;
-import org.glassfish.jersey.servlet.ServletContainer;
-import org.glassfish.jersey.test.DeploymentContext;
-import org.glassfish.jersey.test.ServletDeploymentContext;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import javax.servlet.ServletContext;
 import javax.ws.rs.core.*;
 
 public class CarrierTest extends SpotQuoteTest {
-
-    @Override
-    protected DeploymentContext configureDeployment() {
-        ServletContext servletContext = initializeServletContext();
-        MyResourceConfig myResourceConfig =
-                new MyResourceConfig(servletContext) {{
-
-                }};
-
-        return ServletDeploymentContext
-                .forServlet(new ServletContainer(myResourceConfig))
-                .build();
-    }
 
     @Test
     @Ignore

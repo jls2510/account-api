@@ -3,7 +3,6 @@ package com.scratch;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import javax.servlet.ServletContext;
 import javax.ws.rs.ApplicationPath;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -14,17 +13,15 @@ import java.util.Properties;
 @ApplicationPath("")
 public class MyResourceConfig extends ResourceConfig {
     public static String env;
-    private static ServletContext context;
     private static final String configFile = "config.properties";
 
-    MyResourceConfig(ServletContext context) {
-        this.context = context;
+    public MyResourceConfig() {
         register(new AbstractBinder() {
             @Override
             protected void configure() {
             }
         });
-        packages("com.scratch");
+        packages("com.scratch.api");
     }
 
     /*Add environment to variable*/

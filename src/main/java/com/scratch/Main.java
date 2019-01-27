@@ -1,5 +1,6 @@
 package com.scratch;
 
+import com.scratch.MyResourceConfig;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 
@@ -29,7 +30,7 @@ class Main {
         // set a flag so we know that we are running under grizzly
         System.setProperty("isGrizzly", "true");
 
-        ResourceConfig rc = new Application();
+        ResourceConfig rc = new MyResourceConfig();
 
         // createNewOpportunity and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI

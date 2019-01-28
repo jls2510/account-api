@@ -12,10 +12,10 @@ import java.util.Properties;
 
 @ApplicationPath("")
 public class MyResourceConfig extends ResourceConfig {
-    public static String env;
+    private static String env;
     private static final String configFile = "config.properties";
 
-    public MyResourceConfig() {
+    MyResourceConfig() {
         register(new AbstractBinder() {
             @Override
             protected void configure() {
@@ -30,16 +30,23 @@ public class MyResourceConfig extends ResourceConfig {
     }
 
     /*return the environment variable*/
-    public static String config(String variable) throws IOException {
+    public static String config(String variable) {
         //return context.getInitParameter(getEnv(variable));
         Properties config = new Properties();
-        config.load(Thread
-                .currentThread()
-                .getContextClassLoader()
-                .getResourceAsStream(configFile));
+        String returnValue;
+        try {
+            config.load(Thread
+                    .currentThread()
+                    .getContextClassLoader()
+                    .getResourceAsStream(configFile));
 
+            returnValue =  config.getProperty(MyResourceConfig.env(variable));
 
-        return config.getProperty(MyResourceConfig.env(variable));
+        } catch (IOException e) {
+            returnValue = null;
+        }
+
+        return returnValue;
     }
 
     private static String env(String variable) {

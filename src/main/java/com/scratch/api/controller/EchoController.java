@@ -21,7 +21,7 @@ public class EchoController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getEcho(@PathParam("message") String message) {
 
-        Response response = Response.ok(new GenericResponseModel(true, message)).build();
+        Response response = Response.ok(new GenericResponseModel(true, null, null, null, message, null)).build();
 
         return response;
     }

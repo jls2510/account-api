@@ -87,7 +87,7 @@ public class SpotQuoteTest extends JerseyTest {
     @Test
     //@Ignore
     public void get() {
-        System.out.println("EchoTest.get()");
+        System.out.println("UrlResponseTest.get()");
         WebTarget webTarget
                 = target("echo/Hello");
 

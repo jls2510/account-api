@@ -13,7 +13,7 @@ import java.util.Properties;
 @ApplicationPath("")
 public class MyResourceConfig extends ResourceConfig {
     private static String env;
-    private static final String configFile = "config.properties";
+    private static final String configFile = "tmp/config.properties";
 
     MyResourceConfig() {
         register(new AbstractBinder() {

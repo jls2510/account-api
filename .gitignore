@@ -1,3 +1,7 @@
 
 .idea
 
+config.properties
+*.log
+*.log.lck
+

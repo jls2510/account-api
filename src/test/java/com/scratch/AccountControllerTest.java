@@ -9,18 +9,19 @@ import org.glassfish.jersey.test.ServletDeploymentContext;
 import org.glassfish.jersey.test.grizzly.GrizzlyWebTestContainerFactory;
 import org.glassfish.jersey.test.spi.TestContainerFactory;
 import org.junit.Assert;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AccountControllerTest extends JerseyTest {
 
-    private static int accountId = 0;
+    private static int accountId = 0; // id known to exist
 
     @Override
     protected TestContainerFactory getTestContainerFactory() {
@@ -35,17 +36,18 @@ public class AccountControllerTest extends JerseyTest {
     @Test
     @Ignore
     public void testGetById() {
-        Response output = target("/api/account/id/19").request().get();
-        Assert.assertEquals("Should return status 200", 200, output.getStatus());
-        Assert.assertNotNull("Should return user object as json", output.getEntity());
-        System.out.println(output.getStatus());
-        System.out.println(output.readEntity(String.class));
+        this.accountId = 19; // known good
+        Response response = target("/account/id/" + this.accountId).request().get();
+        Assert.assertEquals("Should return status 200", 200, response.getStatus());
+        Assert.assertNotNull("Should return user object as json", response.getEntity());
+        System.out.println(response.getStatus());
+        System.out.println(response.readEntity(String.class));
     }
 
     @Test
     @Ignore
-    public void tesFetchAll() {
-        Response response = target("/api/account").request().get();
+    public void testFetchAll() {
+        Response response = target("/account").request().get();
         Assert.assertEquals("should return status 200", 200, response.getStatus());
         Assert.assertNotNull("Should return user list", response.getEntity().toString());
         System.out.println(response.getStatus());
@@ -54,61 +56,61 @@ public class AccountControllerTest extends JerseyTest {
 
     @Test
     //@Ignore
-    public void testCreate() {
+    // Note: Create, Update, Delete must occur in order
+    public void A_testCreate() {
         Account account = new Account();
         account.setUsername("kogent@ping23.com");
         account.setEmail("kogent@ping23.com");
         account.setFirstName("Jim");
         account.setLastName("KOgent");
         account.setStripeId("cus_DpRjtlFL0608yN");
-        account.setIsActive((byte)1);
-        account.setIsVerified((byte)1);
+        account.setIsActive((byte) 1);
+        account.setIsVerified((byte) 1);
 
-        Response output = target("/api/account/create").request().post(Entity.entity(account, MediaType.APPLICATION_JSON));
-        System.out.println(output.getStatus());
-        Assert.assertEquals("Should return status 201", 201, output.getStatus());
+        Response response = target("/account/create").request().post(Entity.entity(account, MediaType.APPLICATION_JSON));
+        System.out.println(response.getStatus());
+        Assert.assertEquals("Should return status 201", 201, response.getStatus());
+
+        Account responseAccount = response.readEntity(Account.class);
+        System.out.println("responseAccount = " + responseAccount.toString());
+        this.accountId = responseAccount.getId().intValue();
     }
 
     @Test
     //@Ignore
-    public void testUpdate() {
+    // Note: Create, Update, Delete must occur in order
+    public void B_testUpdate() {
         Account account = new Account();
         account.setUsername("kogent@kogentservices.com");
         account.setEmail("kogent@kogentservices.com");
         account.setFirstName("Jim");
         account.setLastName("KOgent");
         account.setStripeId("cus_DpRjtlFL0608yN");
-        account.setIsActive((byte)1);
-        account.setIsVerified((byte)1);
+        account.setIsActive((byte) 1);
+        account.setIsVerified((byte) 1);
 
-        Response output = target("/api/account/update/username/kogent@ping23.com").request().put(Entity.entity(account, MediaType.APPLICATION_JSON));
+        Response response = target("/account/update/" + this.accountId).request().put(Entity.entity(account, MediaType.APPLICATION_JSON));
 
-        Assert.assertEquals("Should return status 204", 204, output.getStatus());
-        System.out.println(output.getStatus());
+        Assert.assertEquals("Should return status 204", 204, response.getStatus());
+        System.out.println(response.getStatus());
     }
 
     @Test
     //@Ignore
-    public void testDelete() {
-        Response output = target("/api/account/delete/username/kogent@kogentservices.com").request().delete();
-        Assert.assertEquals("Should return status 204", 204, output.getStatus());
+    // Note: Create, Update, Delete must occur in order
+    public void C_testDelete() {
+        Response response = target("/account/delete/" + this.accountId).request().delete();
+        Assert.assertEquals("Should return status 204", 204, response.getStatus());
     }
 
     @Test
-    @Ignore
-    public void get() {
-        System.out.println("UrlResponseTest.get()");
-        WebTarget webTarget
-                = target("echo/Hello");
+    //@Ignore
+    public void D_testGetDeletedAccountById() {
+        //this.accountId = 0;
+        Response response = target("/account/id/" + this.accountId).request().get();
+        Assert.assertEquals("Should return status 304", 304, response.getStatus());
 
-        Response response =
-                webTarget.request(MediaType.TEXT_PLAIN)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .get();
-
-        Assert.assertEquals("Http Response should be 200: ", Response.Status.OK.getStatusCode(), response.getStatus());
-        Assert.assertEquals("Http Content-Type should be: ", MediaType.APPLICATION_JSON, response.getHeaderString(HttpHeaders.CONTENT_TYPE));
-
+        System.out.println(response.getStatus() + "; " + response.readEntity(String.class));
     }
 
 }

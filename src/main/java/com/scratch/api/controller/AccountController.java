@@ -32,15 +32,8 @@ import javax.ws.rs.core.Response;
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Path("/api/account")
+@Path("/account")
 public class AccountController {
-
-//    @Inject
-//    lateinit var
-//    Provider tomcatRequestProvider = new HttpServletRequest();
-//    @Inject
-//    lateinit var
-//    grizzlyRequestProvider:Provider<Request>
 
     private static Configuration configuration;
     private static MySQLConnection msc;
@@ -67,7 +60,15 @@ public class AccountController {
 
         try {
             configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
-            result.add(new AccountDao(configuration).fetchOneById(ULong.valueOf((long) id)));
+            Account account = new AccountDao(configuration).fetchOneById(ULong.valueOf((long) id));
+            if (account != null) {
+                result.add(account);
+            } else {
+                return Response
+                        .status(304)
+                        .entity("{\"success\":false}")
+                        .build();
+            }
 
         } catch (Exception e) {
 
@@ -86,7 +87,7 @@ public class AccountController {
     @GET
     @Path("/username/{username}")
     public Response getByUsername(@PathParam("username") String username) {
-        System.out.println("AccountController.getById()");
+        System.out.println("AccountController.getByUsername()");
         List<Account> result = new ArrayList<Account>();
 
         try {
@@ -108,6 +109,7 @@ public class AccountController {
      */
     @GET
     public Response getList() {
+        System.out.println("AccountController.getList()");
         List<Account> result = new ArrayList<Account>();
 
         try {
@@ -119,7 +121,6 @@ public class AccountController {
             log.error(e.getMessage());
             return new ExceptionJsonResponse().toResponse(e);
         }
-
 
         return toJsonResponse(result);
     } // getList()
@@ -170,7 +171,7 @@ public class AccountController {
             configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
             AccountDao accountDao = new AccountDao(configuration);
 
-            account.setId(ULong.valueOf((long)id)); // in case it's not set as received
+            account.setId(ULong.valueOf((long) id)); // in case it's not set as received
 
             accountDao.update(account);
 
@@ -204,7 +205,7 @@ public class AccountController {
             } else {
                 return Response
                         .status(304)
-                        .entity("{'success': false}")
+                        .entity("{\"success\":false}")
                         .build();
             }
 

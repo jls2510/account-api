@@ -29,22 +29,24 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Cart implements Serializable {
 
-    private static final long serialVersionUID = 143020246;
+    private static final long serialVersionUID = 436642644;
 
-    private final ULong                     id;
-    private final String                    sessionId;
-    private final ULong                     userId;
-    private final String                    itemNumber;
-    private final BigDecimal                price;
-    private final BigDecimal                quantity;
-    private final UInteger                  discountPercent;
-    private final BigDecimal                discountPrice;
-    private final String                    promoCode;
-    private final CartShippingPromotionType shippingPromotionType;
-    private final BigDecimal                shippingPromotionAmount;
-    private final String                    shippingPromotionMethod;
-    private final Timestamp                 updatedTs;
-    private final Timestamp                 createdTs;
+    private ULong                     id;
+    private String                    sessionId;
+    private ULong                     userId;
+    private String                    itemNumber;
+    private BigDecimal                price;
+    private BigDecimal                quantity;
+    private UInteger                  discountPercent;
+    private BigDecimal                discountPrice;
+    private String                    promoCode;
+    private CartShippingPromotionType shippingPromotionType;
+    private BigDecimal                shippingPromotionAmount;
+    private String                    shippingPromotionMethod;
+    private Timestamp                 updatedTs;
+    private Timestamp                 createdTs;
+
+    public Cart() {}
 
     public Cart(Cart value) {
         this.id = value.id;
@@ -99,56 +101,126 @@ public class Cart implements Serializable {
         return this.id;
     }
 
+    public Cart setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getSessionId() {
         return this.sessionId;
+    }
+
+    public Cart setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+        return this;
     }
 
     public ULong getUserId() {
         return this.userId;
     }
 
+    public Cart setUserId(ULong userId) {
+        this.userId = userId;
+        return this;
+    }
+
     public String getItemNumber() {
         return this.itemNumber;
+    }
+
+    public Cart setItemNumber(String itemNumber) {
+        this.itemNumber = itemNumber;
+        return this;
     }
 
     public BigDecimal getPrice() {
         return this.price;
     }
 
+    public Cart setPrice(BigDecimal price) {
+        this.price = price;
+        return this;
+    }
+
     public BigDecimal getQuantity() {
         return this.quantity;
+    }
+
+    public Cart setQuantity(BigDecimal quantity) {
+        this.quantity = quantity;
+        return this;
     }
 
     public UInteger getDiscountPercent() {
         return this.discountPercent;
     }
 
+    public Cart setDiscountPercent(UInteger discountPercent) {
+        this.discountPercent = discountPercent;
+        return this;
+    }
+
     public BigDecimal getDiscountPrice() {
         return this.discountPrice;
+    }
+
+    public Cart setDiscountPrice(BigDecimal discountPrice) {
+        this.discountPrice = discountPrice;
+        return this;
     }
 
     public String getPromoCode() {
         return this.promoCode;
     }
 
+    public Cart setPromoCode(String promoCode) {
+        this.promoCode = promoCode;
+        return this;
+    }
+
     public CartShippingPromotionType getShippingPromotionType() {
         return this.shippingPromotionType;
+    }
+
+    public Cart setShippingPromotionType(CartShippingPromotionType shippingPromotionType) {
+        this.shippingPromotionType = shippingPromotionType;
+        return this;
     }
 
     public BigDecimal getShippingPromotionAmount() {
         return this.shippingPromotionAmount;
     }
 
+    public Cart setShippingPromotionAmount(BigDecimal shippingPromotionAmount) {
+        this.shippingPromotionAmount = shippingPromotionAmount;
+        return this;
+    }
+
     public String getShippingPromotionMethod() {
         return this.shippingPromotionMethod;
+    }
+
+    public Cart setShippingPromotionMethod(String shippingPromotionMethod) {
+        this.shippingPromotionMethod = shippingPromotionMethod;
+        return this;
     }
 
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Cart setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Cart setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

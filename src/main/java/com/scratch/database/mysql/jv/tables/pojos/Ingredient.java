@@ -25,12 +25,14 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Ingredient implements Serializable {
 
-    private static final long serialVersionUID = -1351756820;
+    private static final long serialVersionUID = -2112245635;
 
-    private final ULong     id;
-    private final String    name;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private String    name;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public Ingredient() {}
 
     public Ingredient(Ingredient value) {
         this.id = value.id;
@@ -55,16 +57,36 @@ public class Ingredient implements Serializable {
         return this.id;
     }
 
+    public Ingredient setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return this.name;
+    }
+
+    public Ingredient setName(String name) {
+        this.name = name;
+        return this;
     }
 
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Ingredient setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Ingredient setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

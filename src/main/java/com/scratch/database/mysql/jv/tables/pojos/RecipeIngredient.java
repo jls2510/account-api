@@ -27,17 +27,19 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RecipeIngredient implements Serializable {
 
-    private static final long serialVersionUID = -1069100441;
+    private static final long serialVersionUID = -1959938647;
 
-    private final ULong                id;
-    private final RecipeIngredientType type;
-    private final String               relatedId;
-    private final ULong                recipeIngredientGroupId;
-    private final String               amount;
-    private final String               uom;
-    private final String               description;
-    private final Timestamp            updatedTs;
-    private final Timestamp            createdTs;
+    private ULong                id;
+    private RecipeIngredientType type;
+    private String               relatedId;
+    private ULong                recipeIngredientGroupId;
+    private String               amount;
+    private String               uom;
+    private String               description;
+    private Timestamp            updatedTs;
+    private Timestamp            createdTs;
+
+    public RecipeIngredient() {}
 
     public RecipeIngredient(RecipeIngredient value) {
         this.id = value.id;
@@ -77,36 +79,81 @@ public class RecipeIngredient implements Serializable {
         return this.id;
     }
 
+    public RecipeIngredient setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public RecipeIngredientType getType() {
         return this.type;
+    }
+
+    public RecipeIngredient setType(RecipeIngredientType type) {
+        this.type = type;
+        return this;
     }
 
     public String getRelatedId() {
         return this.relatedId;
     }
 
+    public RecipeIngredient setRelatedId(String relatedId) {
+        this.relatedId = relatedId;
+        return this;
+    }
+
     public ULong getRecipeIngredientGroupId() {
         return this.recipeIngredientGroupId;
+    }
+
+    public RecipeIngredient setRecipeIngredientGroupId(ULong recipeIngredientGroupId) {
+        this.recipeIngredientGroupId = recipeIngredientGroupId;
+        return this;
     }
 
     public String getAmount() {
         return this.amount;
     }
 
+    public RecipeIngredient setAmount(String amount) {
+        this.amount = amount;
+        return this;
+    }
+
     public String getUom() {
         return this.uom;
+    }
+
+    public RecipeIngredient setUom(String uom) {
+        this.uom = uom;
+        return this;
     }
 
     public String getDescription() {
         return this.description;
     }
 
+    public RecipeIngredient setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public RecipeIngredient setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public RecipeIngredient setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

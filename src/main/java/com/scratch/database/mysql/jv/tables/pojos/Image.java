@@ -27,19 +27,21 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Image implements Serializable {
 
-    private static final long serialVersionUID = -1799131649;
+    private static final long serialVersionUID = 1685712248;
 
-    private final ULong     id;
-    private final ImageType type;
-    private final String    relatedId;
-    private final String    filename;
-    private final Byte      isPrimary;
-    private final String    title;
-    private final String    alt;
-    private final Integer   sequenceNumber;
-    private final Byte      isVideo;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private ImageType type;
+    private String    relatedId;
+    private String    filename;
+    private Byte      isPrimary;
+    private String    title;
+    private String    alt;
+    private Integer   sequenceNumber;
+    private Byte      isVideo;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public Image() {}
 
     public Image(Image value) {
         this.id = value.id;
@@ -85,44 +87,99 @@ public class Image implements Serializable {
         return this.id;
     }
 
+    public Image setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ImageType getType() {
         return this.type;
+    }
+
+    public Image setType(ImageType type) {
+        this.type = type;
+        return this;
     }
 
     public String getRelatedId() {
         return this.relatedId;
     }
 
+    public Image setRelatedId(String relatedId) {
+        this.relatedId = relatedId;
+        return this;
+    }
+
     public String getFilename() {
         return this.filename;
+    }
+
+    public Image setFilename(String filename) {
+        this.filename = filename;
+        return this;
     }
 
     public Byte getIsPrimary() {
         return this.isPrimary;
     }
 
+    public Image setIsPrimary(Byte isPrimary) {
+        this.isPrimary = isPrimary;
+        return this;
+    }
+
     public String getTitle() {
         return this.title;
+    }
+
+    public Image setTitle(String title) {
+        this.title = title;
+        return this;
     }
 
     public String getAlt() {
         return this.alt;
     }
 
+    public Image setAlt(String alt) {
+        this.alt = alt;
+        return this;
+    }
+
     public Integer getSequenceNumber() {
         return this.sequenceNumber;
+    }
+
+    public Image setSequenceNumber(Integer sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
+        return this;
     }
 
     public Byte getIsVideo() {
         return this.isVideo;
     }
 
+    public Image setIsVideo(Byte isVideo) {
+        this.isVideo = isVideo;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Image setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Image setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

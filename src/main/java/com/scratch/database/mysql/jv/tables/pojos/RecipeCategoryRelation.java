@@ -25,13 +25,15 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RecipeCategoryRelation implements Serializable {
 
-    private static final long serialVersionUID = -798252811;
+    private static final long serialVersionUID = -1704008591;
 
-    private final ULong     id;
-    private final ULong     recipeId;
-    private final ULong     categoryId;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private ULong     recipeId;
+    private ULong     categoryId;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public RecipeCategoryRelation() {}
 
     public RecipeCategoryRelation(RecipeCategoryRelation value) {
         this.id = value.id;
@@ -59,20 +61,45 @@ public class RecipeCategoryRelation implements Serializable {
         return this.id;
     }
 
+    public RecipeCategoryRelation setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getRecipeId() {
         return this.recipeId;
+    }
+
+    public RecipeCategoryRelation setRecipeId(ULong recipeId) {
+        this.recipeId = recipeId;
+        return this;
     }
 
     public ULong getCategoryId() {
         return this.categoryId;
     }
 
+    public RecipeCategoryRelation setCategoryId(ULong categoryId) {
+        this.categoryId = categoryId;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public RecipeCategoryRelation setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public RecipeCategoryRelation setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

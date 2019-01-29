@@ -25,21 +25,23 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Recipe implements Serializable {
 
-    private static final long serialVersionUID = 631093629;
+    private static final long serialVersionUID = -265956997;
 
-    private final ULong     id;
-    private final String    name;
-    private final String    url;
-    private final String    description;
-    private final Integer   sequence;
-    private final String    servings;
-    private final String    prepTime;
-    private final String    instructions;
-    private final String    metaTitle;
-    private final String    metaDescription;
-    private final Byte      isDeleted;
-    private final Timestamp createdTs;
-    private final Timestamp updatedTs;
+    private ULong     id;
+    private String    name;
+    private String    url;
+    private String    description;
+    private Integer   sequence;
+    private String    servings;
+    private String    prepTime;
+    private String    instructions;
+    private String    metaTitle;
+    private String    metaDescription;
+    private Byte      isDeleted;
+    private Timestamp createdTs;
+    private Timestamp updatedTs;
+
+    public Recipe() {}
 
     public Recipe(Recipe value) {
         this.id = value.id;
@@ -91,52 +93,117 @@ public class Recipe implements Serializable {
         return this.id;
     }
 
+    public Recipe setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return this.name;
+    }
+
+    public Recipe setName(String name) {
+        this.name = name;
+        return this;
     }
 
     public String getUrl() {
         return this.url;
     }
 
+    public Recipe setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
     public String getDescription() {
         return this.description;
+    }
+
+    public Recipe setDescription(String description) {
+        this.description = description;
+        return this;
     }
 
     public Integer getSequence() {
         return this.sequence;
     }
 
+    public Recipe setSequence(Integer sequence) {
+        this.sequence = sequence;
+        return this;
+    }
+
     public String getServings() {
         return this.servings;
+    }
+
+    public Recipe setServings(String servings) {
+        this.servings = servings;
+        return this;
     }
 
     public String getPrepTime() {
         return this.prepTime;
     }
 
+    public Recipe setPrepTime(String prepTime) {
+        this.prepTime = prepTime;
+        return this;
+    }
+
     public String getInstructions() {
         return this.instructions;
+    }
+
+    public Recipe setInstructions(String instructions) {
+        this.instructions = instructions;
+        return this;
     }
 
     public String getMetaTitle() {
         return this.metaTitle;
     }
 
+    public Recipe setMetaTitle(String metaTitle) {
+        this.metaTitle = metaTitle;
+        return this;
+    }
+
     public String getMetaDescription() {
         return this.metaDescription;
+    }
+
+    public Recipe setMetaDescription(String metaDescription) {
+        this.metaDescription = metaDescription;
+        return this;
     }
 
     public Byte getIsDeleted() {
         return this.isDeleted;
     }
 
+    public Recipe setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public Recipe setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public Recipe setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     @Override

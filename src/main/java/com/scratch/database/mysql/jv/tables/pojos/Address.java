@@ -25,23 +25,25 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Address implements Serializable {
 
-    private static final long serialVersionUID = -2108352155;
+    private static final long serialVersionUID = 1762273041;
 
-    private final ULong     id;
-    private final ULong     accountId;
-    private final String    name;
-    private final String    careOf;
-    private final String    line1;
-    private final String    line2;
-    private final String    city;
-    private final String    state;
-    private final String    postalCode;
-    private final String    country;
-    private final String    phone;
-    private final String    email;
-    private final Byte      default_;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private ULong     accountId;
+    private String    name;
+    private String    careOf;
+    private String    line1;
+    private String    line2;
+    private String    city;
+    private String    state;
+    private String    postalCode;
+    private String    country;
+    private String    phone;
+    private String    email;
+    private Byte      default_;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public Address() {}
 
     public Address(Address value) {
         this.id = value.id;
@@ -99,60 +101,135 @@ public class Address implements Serializable {
         return this.id;
     }
 
+    public Address setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getAccountId() {
         return this.accountId;
+    }
+
+    public Address setAccountId(ULong accountId) {
+        this.accountId = accountId;
+        return this;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public Address setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public String getCareOf() {
         return this.careOf;
+    }
+
+    public Address setCareOf(String careOf) {
+        this.careOf = careOf;
+        return this;
     }
 
     public String getLine1() {
         return this.line1;
     }
 
+    public Address setLine1(String line1) {
+        this.line1 = line1;
+        return this;
+    }
+
     public String getLine2() {
         return this.line2;
+    }
+
+    public Address setLine2(String line2) {
+        this.line2 = line2;
+        return this;
     }
 
     public String getCity() {
         return this.city;
     }
 
+    public Address setCity(String city) {
+        this.city = city;
+        return this;
+    }
+
     public String getState() {
         return this.state;
+    }
+
+    public Address setState(String state) {
+        this.state = state;
+        return this;
     }
 
     public String getPostalCode() {
         return this.postalCode;
     }
 
+    public Address setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+        return this;
+    }
+
     public String getCountry() {
         return this.country;
+    }
+
+    public Address setCountry(String country) {
+        this.country = country;
+        return this;
     }
 
     public String getPhone() {
         return this.phone;
     }
 
+    public Address setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
     public String getEmail() {
         return this.email;
+    }
+
+    public Address setEmail(String email) {
+        this.email = email;
+        return this;
     }
 
     public Byte getDefault() {
         return this.default_;
     }
 
+    public Address setDefault(Byte default_) {
+        this.default_ = default_;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Address setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Address setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

@@ -24,11 +24,13 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AccountFilter implements Serializable {
 
-    private static final long serialVersionUID = 81175436;
+    private static final long serialVersionUID = -989542772;
 
-    private final ULong id;
-    private final ULong accountId;
-    private final ULong tagId;
+    private ULong id;
+    private ULong accountId;
+    private ULong tagId;
+
+    public AccountFilter() {}
 
     public AccountFilter(AccountFilter value) {
         this.id = value.id;
@@ -50,12 +52,27 @@ public class AccountFilter implements Serializable {
         return this.id;
     }
 
+    public AccountFilter setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getAccountId() {
         return this.accountId;
     }
 
+    public AccountFilter setAccountId(ULong accountId) {
+        this.accountId = accountId;
+        return this;
+    }
+
     public ULong getTagId() {
         return this.tagId;
+    }
+
+    public AccountFilter setTagId(ULong tagId) {
+        this.tagId = tagId;
+        return this;
     }
 
     @Override

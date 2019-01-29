@@ -25,21 +25,23 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Account implements Serializable {
 
-    private static final long serialVersionUID = 1845874486;
+    private static final long serialVersionUID = -1200725937;
 
-    private final ULong     id;
-    private final String    username;
-    private final String    email;
-    private final String    password;
-    private final String    firstName;
-    private final String    lastName;
-    private final String    stripeId;
-    private final Byte      isActive;
-    private final Byte      isVerified;
-    private final String    verificationCode;
-    private final Timestamp verificationExpire;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private String    username;
+    private String    email;
+    private String    password;
+    private String    firstName;
+    private String    lastName;
+    private String    stripeId;
+    private Byte      isActive;
+    private Byte      isVerified;
+    private String    verificationCode;
+    private Timestamp verificationExpire;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public Account() {}
 
     public Account(Account value) {
         this.id = value.id;
@@ -91,52 +93,117 @@ public class Account implements Serializable {
         return this.id;
     }
 
+    public Account setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getUsername() {
         return this.username;
+    }
+
+    public Account setUsername(String username) {
+        this.username = username;
+        return this;
     }
 
     public String getEmail() {
         return this.email;
     }
 
+    public Account setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
     public String getPassword() {
         return this.password;
+    }
+
+    public Account setPassword(String password) {
+        this.password = password;
+        return this;
     }
 
     public String getFirstName() {
         return this.firstName;
     }
 
+    public Account setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
     public String getLastName() {
         return this.lastName;
+    }
+
+    public Account setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
     }
 
     public String getStripeId() {
         return this.stripeId;
     }
 
+    public Account setStripeId(String stripeId) {
+        this.stripeId = stripeId;
+        return this;
+    }
+
     public Byte getIsActive() {
         return this.isActive;
+    }
+
+    public Account setIsActive(Byte isActive) {
+        this.isActive = isActive;
+        return this;
     }
 
     public Byte getIsVerified() {
         return this.isVerified;
     }
 
+    public Account setIsVerified(Byte isVerified) {
+        this.isVerified = isVerified;
+        return this;
+    }
+
     public String getVerificationCode() {
         return this.verificationCode;
+    }
+
+    public Account setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+        return this;
     }
 
     public Timestamp getVerificationExpire() {
         return this.verificationExpire;
     }
 
+    public Account setVerificationExpire(Timestamp verificationExpire) {
+        this.verificationExpire = verificationExpire;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Account setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Account setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

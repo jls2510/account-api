@@ -25,13 +25,15 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class OrderTrackingInfo implements Serializable {
 
-    private static final long serialVersionUID = -1211568833;
+    private static final long serialVersionUID = -840664445;
 
-    private final ULong     id;
-    private final ULong     orderId;
-    private final String    trackingNumber;
-    private final Timestamp createdTs;
-    private final Timestamp updatedTs;
+    private ULong     id;
+    private ULong     orderId;
+    private String    trackingNumber;
+    private Timestamp createdTs;
+    private Timestamp updatedTs;
+
+    public OrderTrackingInfo() {}
 
     public OrderTrackingInfo(OrderTrackingInfo value) {
         this.id = value.id;
@@ -59,20 +61,45 @@ public class OrderTrackingInfo implements Serializable {
         return this.id;
     }
 
+    public OrderTrackingInfo setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getOrderId() {
         return this.orderId;
+    }
+
+    public OrderTrackingInfo setOrderId(ULong orderId) {
+        this.orderId = orderId;
+        return this;
     }
 
     public String getTrackingNumber() {
         return this.trackingNumber;
     }
 
+    public OrderTrackingInfo setTrackingNumber(String trackingNumber) {
+        this.trackingNumber = trackingNumber;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public OrderTrackingInfo setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public OrderTrackingInfo setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     @Override

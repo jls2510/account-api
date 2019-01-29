@@ -25,13 +25,15 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RecipeIngredientGroup implements Serializable {
 
-    private static final long serialVersionUID = -1049759397;
+    private static final long serialVersionUID = -2142743121;
 
-    private final ULong     id;
-    private final ULong     recipeId;
-    private final String    name;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private ULong     recipeId;
+    private String    name;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public RecipeIngredientGroup() {}
 
     public RecipeIngredientGroup(RecipeIngredientGroup value) {
         this.id = value.id;
@@ -59,20 +61,45 @@ public class RecipeIngredientGroup implements Serializable {
         return this.id;
     }
 
+    public RecipeIngredientGroup setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getRecipeId() {
         return this.recipeId;
+    }
+
+    public RecipeIngredientGroup setRecipeId(ULong recipeId) {
+        this.recipeId = recipeId;
+        return this;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public RecipeIngredientGroup setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public RecipeIngredientGroup setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public RecipeIngredientGroup setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

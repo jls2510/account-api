@@ -28,22 +28,24 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PromotionHeader implements Serializable {
 
-    private static final long serialVersionUID = 328662237;
+    private static final long serialVersionUID = 9157568;
 
-    private final ULong               id;
-    private final String              code;
-    private final PromotionHeaderType type;
-    private final Integer             minValue;
-    private final Byte                loginRequired;
-    private final Integer             usageLimit;
-    private final Integer             discountLimit;
-    private final Date                startDate;
-    private final Date                endDate;
-    private final Byte                active;
-    private final String              description;
-    private final Byte                isDeleted;
-    private final Timestamp           createdTs;
-    private final Timestamp           updatedTs;
+    private ULong               id;
+    private String              code;
+    private PromotionHeaderType type;
+    private Integer             minValue;
+    private Byte                loginRequired;
+    private Integer             usageLimit;
+    private Integer             discountLimit;
+    private Date                startDate;
+    private Date                endDate;
+    private Byte                active;
+    private String              description;
+    private Byte                isDeleted;
+    private Timestamp           createdTs;
+    private Timestamp           updatedTs;
+
+    public PromotionHeader() {}
 
     public PromotionHeader(PromotionHeader value) {
         this.id = value.id;
@@ -98,56 +100,126 @@ public class PromotionHeader implements Serializable {
         return this.id;
     }
 
+    public PromotionHeader setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getCode() {
         return this.code;
+    }
+
+    public PromotionHeader setCode(String code) {
+        this.code = code;
+        return this;
     }
 
     public PromotionHeaderType getType() {
         return this.type;
     }
 
+    public PromotionHeader setType(PromotionHeaderType type) {
+        this.type = type;
+        return this;
+    }
+
     public Integer getMinValue() {
         return this.minValue;
+    }
+
+    public PromotionHeader setMinValue(Integer minValue) {
+        this.minValue = minValue;
+        return this;
     }
 
     public Byte getLoginRequired() {
         return this.loginRequired;
     }
 
+    public PromotionHeader setLoginRequired(Byte loginRequired) {
+        this.loginRequired = loginRequired;
+        return this;
+    }
+
     public Integer getUsageLimit() {
         return this.usageLimit;
+    }
+
+    public PromotionHeader setUsageLimit(Integer usageLimit) {
+        this.usageLimit = usageLimit;
+        return this;
     }
 
     public Integer getDiscountLimit() {
         return this.discountLimit;
     }
 
+    public PromotionHeader setDiscountLimit(Integer discountLimit) {
+        this.discountLimit = discountLimit;
+        return this;
+    }
+
     public Date getStartDate() {
         return this.startDate;
+    }
+
+    public PromotionHeader setStartDate(Date startDate) {
+        this.startDate = startDate;
+        return this;
     }
 
     public Date getEndDate() {
         return this.endDate;
     }
 
+    public PromotionHeader setEndDate(Date endDate) {
+        this.endDate = endDate;
+        return this;
+    }
+
     public Byte getActive() {
         return this.active;
+    }
+
+    public PromotionHeader setActive(Byte active) {
+        this.active = active;
+        return this;
     }
 
     public String getDescription() {
         return this.description;
     }
 
+    public PromotionHeader setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
     public Byte getIsDeleted() {
         return this.isDeleted;
+    }
+
+    public PromotionHeader setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
     }
 
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public PromotionHeader setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public PromotionHeader setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     @Override

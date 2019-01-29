@@ -22,13 +22,15 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Session implements Serializable {
 
-    private static final long serialVersionUID = -512607006;
+    private static final long serialVersionUID = -1643934986;
 
-    private final String  id;
-    private final String  name;
-    private final Integer modified;
-    private final Integer lifetime;
-    private final String  data;
+    private String  id;
+    private String  name;
+    private Integer modified;
+    private Integer lifetime;
+    private String  data;
+
+    public Session() {}
 
     public Session(Session value) {
         this.id = value.id;
@@ -56,20 +58,45 @@ public class Session implements Serializable {
         return this.id;
     }
 
+    public Session setId(String id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return this.name;
+    }
+
+    public Session setName(String name) {
+        this.name = name;
+        return this;
     }
 
     public Integer getModified() {
         return this.modified;
     }
 
+    public Session setModified(Integer modified) {
+        this.modified = modified;
+        return this;
+    }
+
     public Integer getLifetime() {
         return this.lifetime;
     }
 
+    public Session setLifetime(Integer lifetime) {
+        this.lifetime = lifetime;
+        return this;
+    }
+
     public String getData() {
         return this.data;
+    }
+
+    public Session setData(String data) {
+        this.data = data;
+        return this;
     }
 
     @Override

@@ -25,13 +25,15 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PromotionUsage implements Serializable {
 
-    private static final long serialVersionUID = 1477959244;
+    private static final long serialVersionUID = 364745116;
 
-    private final ULong     id;
-    private final ULong     promotionId;
-    private final ULong     accountId;
-    private final Integer   count;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private ULong     promotionId;
+    private ULong     accountId;
+    private Integer   count;
+    private Timestamp createdTs;
+
+    public PromotionUsage() {}
 
     public PromotionUsage(PromotionUsage value) {
         this.id = value.id;
@@ -59,20 +61,45 @@ public class PromotionUsage implements Serializable {
         return this.id;
     }
 
+    public PromotionUsage setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getPromotionId() {
         return this.promotionId;
+    }
+
+    public PromotionUsage setPromotionId(ULong promotionId) {
+        this.promotionId = promotionId;
+        return this;
     }
 
     public ULong getAccountId() {
         return this.accountId;
     }
 
+    public PromotionUsage setAccountId(ULong accountId) {
+        this.accountId = accountId;
+        return this;
+    }
+
     public Integer getCount() {
         return this.count;
     }
 
+    public PromotionUsage setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public PromotionUsage setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

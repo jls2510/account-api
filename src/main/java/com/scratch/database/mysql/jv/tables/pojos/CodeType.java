@@ -22,11 +22,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class CodeType implements Serializable {
 
-    private static final long serialVersionUID = 1631019199;
+    private static final long serialVersionUID = -1397083528;
 
-    private final Long   id;
-    private final String type;
-    private final String description;
+    private Long   id;
+    private String type;
+    private String description;
+
+    public CodeType() {}
 
     public CodeType(CodeType value) {
         this.id = value.id;
@@ -48,12 +50,27 @@ public class CodeType implements Serializable {
         return this.id;
     }
 
+    public CodeType setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
     public String getType() {
         return this.type;
     }
 
+    public CodeType setType(String type) {
+        this.type = type;
+        return this;
+    }
+
     public String getDescription() {
         return this.description;
+    }
+
+    public CodeType setDescription(String description) {
+        this.description = description;
+        return this;
     }
 
     @Override

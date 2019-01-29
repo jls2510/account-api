@@ -25,20 +25,22 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Category implements Serializable {
 
-    private static final long serialVersionUID = -282343158;
+    private static final long serialVersionUID = -2111610438;
 
-    private final ULong     id;
-    private final String    url;
-    private final String    name;
-    private final String    description;
-    private final String    metaTitle;
-    private final String    metaDescription;
-    private final Integer   sequence;
-    private final Byte      isPrimary;
-    private final Byte      isActive;
-    private final Byte      isDeleted;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private String    url;
+    private String    name;
+    private String    description;
+    private String    metaTitle;
+    private String    metaDescription;
+    private Integer   sequence;
+    private Byte      isPrimary;
+    private Byte      isActive;
+    private Byte      isDeleted;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public Category() {}
 
     public Category(Category value) {
         this.id = value.id;
@@ -87,48 +89,108 @@ public class Category implements Serializable {
         return this.id;
     }
 
+    public Category setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getUrl() {
         return this.url;
+    }
+
+    public Category setUrl(String url) {
+        this.url = url;
+        return this;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public Category setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public String getDescription() {
         return this.description;
+    }
+
+    public Category setDescription(String description) {
+        this.description = description;
+        return this;
     }
 
     public String getMetaTitle() {
         return this.metaTitle;
     }
 
+    public Category setMetaTitle(String metaTitle) {
+        this.metaTitle = metaTitle;
+        return this;
+    }
+
     public String getMetaDescription() {
         return this.metaDescription;
+    }
+
+    public Category setMetaDescription(String metaDescription) {
+        this.metaDescription = metaDescription;
+        return this;
     }
 
     public Integer getSequence() {
         return this.sequence;
     }
 
+    public Category setSequence(Integer sequence) {
+        this.sequence = sequence;
+        return this;
+    }
+
     public Byte getIsPrimary() {
         return this.isPrimary;
+    }
+
+    public Category setIsPrimary(Byte isPrimary) {
+        this.isPrimary = isPrimary;
+        return this;
     }
 
     public Byte getIsActive() {
         return this.isActive;
     }
 
+    public Category setIsActive(Byte isActive) {
+        this.isActive = isActive;
+        return this;
+    }
+
     public Byte getIsDeleted() {
         return this.isDeleted;
+    }
+
+    public Category setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
     }
 
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Category setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Category setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

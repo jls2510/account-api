@@ -27,16 +27,18 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Content implements Serializable {
 
-    private static final long serialVersionUID = -1745424737;
+    private static final long serialVersionUID = -712303072;
 
-    private final ULong         id;
-    private final ULong         parentId;
-    private final ContentStatus status;
-    private final String        title;
-    private final String        url;
-    private final String        content;
-    private final Timestamp     updatedTs;
-    private final Timestamp     createdTs;
+    private ULong         id;
+    private ULong         parentId;
+    private ContentStatus status;
+    private String        title;
+    private String        url;
+    private String        content;
+    private Timestamp     updatedTs;
+    private Timestamp     createdTs;
+
+    public Content() {}
 
     public Content(Content value) {
         this.id = value.id;
@@ -73,32 +75,72 @@ public class Content implements Serializable {
         return this.id;
     }
 
+    public Content setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getParentId() {
         return this.parentId;
+    }
+
+    public Content setParentId(ULong parentId) {
+        this.parentId = parentId;
+        return this;
     }
 
     public ContentStatus getStatus() {
         return this.status;
     }
 
+    public Content setStatus(ContentStatus status) {
+        this.status = status;
+        return this;
+    }
+
     public String getTitle() {
         return this.title;
+    }
+
+    public Content setTitle(String title) {
+        this.title = title;
+        return this;
     }
 
     public String getUrl() {
         return this.url;
     }
 
+    public Content setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
     public String getContent() {
         return this.content;
+    }
+
+    public Content setContent(String content) {
+        this.content = content;
+        return this;
     }
 
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Content setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Content setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

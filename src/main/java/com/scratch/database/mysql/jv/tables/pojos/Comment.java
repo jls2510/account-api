@@ -28,19 +28,21 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Comment implements Serializable {
 
-    private static final long serialVersionUID = 389478941;
+    private static final long serialVersionUID = 746411353;
 
-    private final ULong         id;
-    private final CommentType   type;
-    private final String        relatedId;
-    private final Long          accountId;
-    private final String        name;
-    private final String        comment;
-    private final CommentStatus status;
-    private final String        approvalUser;
-    private final Byte          isDeleted;
-    private final Timestamp     updatedTs;
-    private final Timestamp     createdTs;
+    private ULong         id;
+    private CommentType   type;
+    private String        relatedId;
+    private Long          accountId;
+    private String        name;
+    private String        comment;
+    private CommentStatus status;
+    private String        approvalUser;
+    private Byte          isDeleted;
+    private Timestamp     updatedTs;
+    private Timestamp     createdTs;
+
+    public Comment() {}
 
     public Comment(Comment value) {
         this.id = value.id;
@@ -86,44 +88,99 @@ public class Comment implements Serializable {
         return this.id;
     }
 
+    public Comment setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public CommentType getType() {
         return this.type;
+    }
+
+    public Comment setType(CommentType type) {
+        this.type = type;
+        return this;
     }
 
     public String getRelatedId() {
         return this.relatedId;
     }
 
+    public Comment setRelatedId(String relatedId) {
+        this.relatedId = relatedId;
+        return this;
+    }
+
     public Long getAccountId() {
         return this.accountId;
+    }
+
+    public Comment setAccountId(Long accountId) {
+        this.accountId = accountId;
+        return this;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public Comment setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public String getComment() {
         return this.comment;
+    }
+
+    public Comment setComment(String comment) {
+        this.comment = comment;
+        return this;
     }
 
     public CommentStatus getStatus() {
         return this.status;
     }
 
+    public Comment setStatus(CommentStatus status) {
+        this.status = status;
+        return this;
+    }
+
     public String getApprovalUser() {
         return this.approvalUser;
+    }
+
+    public Comment setApprovalUser(String approvalUser) {
+        this.approvalUser = approvalUser;
+        return this;
     }
 
     public Byte getIsDeleted() {
         return this.isDeleted;
     }
 
+    public Comment setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Comment setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Comment setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

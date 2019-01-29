@@ -25,14 +25,16 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RelatedItems implements Serializable {
 
-    private static final long serialVersionUID = 1977441658;
+    private static final long serialVersionUID = -1964346211;
 
-    private final ULong     id;
-    private final String    itemNumber;
-    private final String    relatedItemNumber;
-    private final ULong     sequenceNumber;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private String    itemNumber;
+    private String    relatedItemNumber;
+    private ULong     sequenceNumber;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public RelatedItems() {}
 
     public RelatedItems(RelatedItems value) {
         this.id = value.id;
@@ -63,24 +65,54 @@ public class RelatedItems implements Serializable {
         return this.id;
     }
 
+    public RelatedItems setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getItemNumber() {
         return this.itemNumber;
+    }
+
+    public RelatedItems setItemNumber(String itemNumber) {
+        this.itemNumber = itemNumber;
+        return this;
     }
 
     public String getRelatedItemNumber() {
         return this.relatedItemNumber;
     }
 
+    public RelatedItems setRelatedItemNumber(String relatedItemNumber) {
+        this.relatedItemNumber = relatedItemNumber;
+        return this;
+    }
+
     public ULong getSequenceNumber() {
         return this.sequenceNumber;
+    }
+
+    public RelatedItems setSequenceNumber(ULong sequenceNumber) {
+        this.sequenceNumber = sequenceNumber;
+        return this;
     }
 
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public RelatedItems setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public RelatedItems setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

@@ -25,13 +25,15 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tag implements Serializable {
 
-    private static final long serialVersionUID = 1607318150;
+    private static final long serialVersionUID = -1960981224;
 
-    private final ULong     id;
-    private final ULong     tagGroupId;
-    private final String    name;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private ULong     tagGroupId;
+    private String    name;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public Tag() {}
 
     public Tag(Tag value) {
         this.id = value.id;
@@ -59,20 +61,45 @@ public class Tag implements Serializable {
         return this.id;
     }
 
+    public Tag setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getTagGroupId() {
         return this.tagGroupId;
+    }
+
+    public Tag setTagGroupId(ULong tagGroupId) {
+        this.tagGroupId = tagGroupId;
+        return this;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public Tag setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Tag setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Tag setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

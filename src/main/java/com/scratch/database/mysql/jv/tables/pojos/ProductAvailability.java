@@ -24,14 +24,16 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ProductAvailability implements Serializable {
 
-    private static final long serialVersionUID = -552494140;
+    private static final long serialVersionUID = -938255736;
 
-    private final ULong   id;
-    private final String  itemNumber;
-    private final Integer s2kAvailable;
-    private final Integer availableQuantity;
-    private final Integer pendingSoldQuantity;
-    private final Integer confirmedSoldQuantity;
+    private ULong   id;
+    private String  itemNumber;
+    private Integer s2kAvailable;
+    private Integer availableQuantity;
+    private Integer pendingSoldQuantity;
+    private Integer confirmedSoldQuantity;
+
+    public ProductAvailability() {}
 
     public ProductAvailability(ProductAvailability value) {
         this.id = value.id;
@@ -62,24 +64,54 @@ public class ProductAvailability implements Serializable {
         return this.id;
     }
 
+    public ProductAvailability setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getItemNumber() {
         return this.itemNumber;
+    }
+
+    public ProductAvailability setItemNumber(String itemNumber) {
+        this.itemNumber = itemNumber;
+        return this;
     }
 
     public Integer getS2kAvailable() {
         return this.s2kAvailable;
     }
 
+    public ProductAvailability setS2kAvailable(Integer s2kAvailable) {
+        this.s2kAvailable = s2kAvailable;
+        return this;
+    }
+
     public Integer getAvailableQuantity() {
         return this.availableQuantity;
+    }
+
+    public ProductAvailability setAvailableQuantity(Integer availableQuantity) {
+        this.availableQuantity = availableQuantity;
+        return this;
     }
 
     public Integer getPendingSoldQuantity() {
         return this.pendingSoldQuantity;
     }
 
+    public ProductAvailability setPendingSoldQuantity(Integer pendingSoldQuantity) {
+        this.pendingSoldQuantity = pendingSoldQuantity;
+        return this;
+    }
+
     public Integer getConfirmedSoldQuantity() {
         return this.confirmedSoldQuantity;
+    }
+
+    public ProductAvailability setConfirmedSoldQuantity(Integer confirmedSoldQuantity) {
+        this.confirmedSoldQuantity = confirmedSoldQuantity;
+        return this;
     }
 
     @Override

@@ -25,15 +25,17 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Banner implements Serializable {
 
-    private static final long serialVersionUID = 960942607;
+    private static final long serialVersionUID = -1979380668;
 
-    private final ULong     id;
-    private final Byte      isActive;
-    private final String    displayText;
-    private final ULong     contentId;
-    private final ULong     promotionId;
-    private final Timestamp createdTs;
-    private final Timestamp updatedTs;
+    private ULong     id;
+    private Byte      isActive;
+    private String    displayText;
+    private ULong     contentId;
+    private ULong     promotionId;
+    private Timestamp createdTs;
+    private Timestamp updatedTs;
+
+    public Banner() {}
 
     public Banner(Banner value) {
         this.id = value.id;
@@ -67,28 +69,63 @@ public class Banner implements Serializable {
         return this.id;
     }
 
+    public Banner setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public Byte getIsActive() {
         return this.isActive;
+    }
+
+    public Banner setIsActive(Byte isActive) {
+        this.isActive = isActive;
+        return this;
     }
 
     public String getDisplayText() {
         return this.displayText;
     }
 
+    public Banner setDisplayText(String displayText) {
+        this.displayText = displayText;
+        return this;
+    }
+
     public ULong getContentId() {
         return this.contentId;
+    }
+
+    public Banner setContentId(ULong contentId) {
+        this.contentId = contentId;
+        return this;
     }
 
     public ULong getPromotionId() {
         return this.promotionId;
     }
 
+    public Banner setPromotionId(ULong promotionId) {
+        this.promotionId = promotionId;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public Banner setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public Banner setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     @Override

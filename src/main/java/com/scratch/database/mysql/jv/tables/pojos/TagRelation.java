@@ -27,13 +27,15 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TagRelation implements Serializable {
 
-    private static final long serialVersionUID = -688106122;
+    private static final long serialVersionUID = -1923992576;
 
-    private final ULong           id;
-    private final TagRelationType type;
-    private final ULong           tagId;
-    private final String          relatedId;
-    private final Timestamp       createdTs;
+    private ULong           id;
+    private TagRelationType type;
+    private ULong           tagId;
+    private String          relatedId;
+    private Timestamp       createdTs;
+
+    public TagRelation() {}
 
     public TagRelation(TagRelation value) {
         this.id = value.id;
@@ -61,20 +63,45 @@ public class TagRelation implements Serializable {
         return this.id;
     }
 
+    public TagRelation setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public TagRelationType getType() {
         return this.type;
+    }
+
+    public TagRelation setType(TagRelationType type) {
+        this.type = type;
+        return this;
     }
 
     public ULong getTagId() {
         return this.tagId;
     }
 
+    public TagRelation setTagId(ULong tagId) {
+        this.tagId = tagId;
+        return this;
+    }
+
     public String getRelatedId() {
         return this.relatedId;
     }
 
+    public TagRelation setRelatedId(String relatedId) {
+        this.relatedId = relatedId;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public TagRelation setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

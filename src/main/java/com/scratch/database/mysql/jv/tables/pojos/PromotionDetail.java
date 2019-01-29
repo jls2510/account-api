@@ -28,15 +28,17 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class PromotionDetail implements Serializable {
 
-    private static final long serialVersionUID = -1558765977;
+    private static final long serialVersionUID = 499457872;
 
-    private final ULong                       id;
-    private final ULong                       promotionId;
-    private final PromotionDetailDetailType   detailType;
-    private final String                      key;
-    private final PromotionDetailDiscountType discountType;
-    private final BigDecimal                  discountAmount;
-    private final Byte                        isDeleted;
+    private ULong                       id;
+    private ULong                       promotionId;
+    private PromotionDetailDetailType   detailType;
+    private String                      key;
+    private PromotionDetailDiscountType discountType;
+    private BigDecimal                  discountAmount;
+    private Byte                        isDeleted;
+
+    public PromotionDetail() {}
 
     public PromotionDetail(PromotionDetail value) {
         this.id = value.id;
@@ -70,28 +72,63 @@ public class PromotionDetail implements Serializable {
         return this.id;
     }
 
+    public PromotionDetail setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getPromotionId() {
         return this.promotionId;
+    }
+
+    public PromotionDetail setPromotionId(ULong promotionId) {
+        this.promotionId = promotionId;
+        return this;
     }
 
     public PromotionDetailDetailType getDetailType() {
         return this.detailType;
     }
 
+    public PromotionDetail setDetailType(PromotionDetailDetailType detailType) {
+        this.detailType = detailType;
+        return this;
+    }
+
     public String getKey() {
         return this.key;
+    }
+
+    public PromotionDetail setKey(String key) {
+        this.key = key;
+        return this;
     }
 
     public PromotionDetailDiscountType getDiscountType() {
         return this.discountType;
     }
 
+    public PromotionDetail setDiscountType(PromotionDetailDiscountType discountType) {
+        this.discountType = discountType;
+        return this;
+    }
+
     public BigDecimal getDiscountAmount() {
         return this.discountAmount;
     }
 
+    public PromotionDetail setDiscountAmount(BigDecimal discountAmount) {
+        this.discountAmount = discountAmount;
+        return this;
+    }
+
     public Byte getIsDeleted() {
         return this.isDeleted;
+    }
+
+    public PromotionDetail setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
     }
 
     @Override

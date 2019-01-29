@@ -24,12 +24,14 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class OrderChargeRefund implements Serializable {
 
-    private static final long serialVersionUID = 1800976976;
+    private static final long serialVersionUID = 1895943376;
 
-    private final UInteger id;
-    private final UInteger orderId;
-    private final String   stripeChargeId;
-    private final String   stripeRefundId;
+    private UInteger id;
+    private UInteger orderId;
+    private String   stripeChargeId;
+    private String   stripeRefundId;
+
+    public OrderChargeRefund() {}
 
     public OrderChargeRefund(OrderChargeRefund value) {
         this.id = value.id;
@@ -54,16 +56,36 @@ public class OrderChargeRefund implements Serializable {
         return this.id;
     }
 
+    public OrderChargeRefund setId(UInteger id) {
+        this.id = id;
+        return this;
+    }
+
     public UInteger getOrderId() {
         return this.orderId;
+    }
+
+    public OrderChargeRefund setOrderId(UInteger orderId) {
+        this.orderId = orderId;
+        return this;
     }
 
     public String getStripeChargeId() {
         return this.stripeChargeId;
     }
 
+    public OrderChargeRefund setStripeChargeId(String stripeChargeId) {
+        this.stripeChargeId = stripeChargeId;
+        return this;
+    }
+
     public String getStripeRefundId() {
         return this.stripeRefundId;
+    }
+
+    public OrderChargeRefund setStripeRefundId(String stripeRefundId) {
+        this.stripeRefundId = stripeRefundId;
+        return this;
     }
 
     @Override

@@ -24,11 +24,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class S2kOrderStatusCode implements Serializable {
 
-    private static final long serialVersionUID = -1102799020;
+    private static final long serialVersionUID = 802438838;
 
-    private final Integer                id;
-    private final S2kOrderStatusCodeCode code;
-    private final String                 name;
+    private Integer                id;
+    private S2kOrderStatusCodeCode code;
+    private String                 name;
+
+    public S2kOrderStatusCode() {}
 
     public S2kOrderStatusCode(S2kOrderStatusCode value) {
         this.id = value.id;
@@ -50,12 +52,27 @@ public class S2kOrderStatusCode implements Serializable {
         return this.id;
     }
 
+    public S2kOrderStatusCode setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     public S2kOrderStatusCodeCode getCode() {
         return this.code;
     }
 
+    public S2kOrderStatusCode setCode(S2kOrderStatusCodeCode code) {
+        this.code = code;
+        return this;
+    }
+
     public String getName() {
         return this.name;
+    }
+
+    public S2kOrderStatusCode setName(String name) {
+        this.name = name;
+        return this;
     }
 
     @Override

@@ -25,17 +25,19 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RecipeCategory implements Serializable {
 
-    private static final long serialVersionUID = 442463970;
+    private static final long serialVersionUID = 986820871;
 
-    private final ULong     id;
-    private final String    url;
-    private final String    name;
-    private final String    description;
-    private final Integer   sequence;
-    private final Byte      isActive;
-    private final Byte      isDeleted;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private String    url;
+    private String    name;
+    private String    description;
+    private Integer   sequence;
+    private Byte      isActive;
+    private Byte      isDeleted;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public RecipeCategory() {}
 
     public RecipeCategory(RecipeCategory value) {
         this.id = value.id;
@@ -75,36 +77,81 @@ public class RecipeCategory implements Serializable {
         return this.id;
     }
 
+    public RecipeCategory setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getUrl() {
         return this.url;
+    }
+
+    public RecipeCategory setUrl(String url) {
+        this.url = url;
+        return this;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public RecipeCategory setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public String getDescription() {
         return this.description;
+    }
+
+    public RecipeCategory setDescription(String description) {
+        this.description = description;
+        return this;
     }
 
     public Integer getSequence() {
         return this.sequence;
     }
 
+    public RecipeCategory setSequence(Integer sequence) {
+        this.sequence = sequence;
+        return this;
+    }
+
     public Byte getIsActive() {
         return this.isActive;
+    }
+
+    public RecipeCategory setIsActive(Byte isActive) {
+        this.isActive = isActive;
+        return this;
     }
 
     public Byte getIsDeleted() {
         return this.isDeleted;
     }
 
+    public RecipeCategory setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public RecipeCategory setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public RecipeCategory setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

@@ -23,13 +23,15 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Cache implements Serializable {
 
-    private static final long serialVersionUID = 1308522929;
+    private static final long serialVersionUID = -589664916;
 
-    private final Integer   id;
-    private final String    hashKey;
-    private final String    jsonValue;
-    private final Timestamp createdTs;
-    private final Timestamp updatedTs;
+    private Integer   id;
+    private String    hashKey;
+    private String    jsonValue;
+    private Timestamp createdTs;
+    private Timestamp updatedTs;
+
+    public Cache() {}
 
     public Cache(Cache value) {
         this.id = value.id;
@@ -57,20 +59,45 @@ public class Cache implements Serializable {
         return this.id;
     }
 
+    public Cache setId(Integer id) {
+        this.id = id;
+        return this;
+    }
+
     public String getHashKey() {
         return this.hashKey;
+    }
+
+    public Cache setHashKey(String hashKey) {
+        this.hashKey = hashKey;
+        return this;
     }
 
     public String getJsonValue() {
         return this.jsonValue;
     }
 
+    public Cache setJsonValue(String jsonValue) {
+        this.jsonValue = jsonValue;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public Cache setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public Cache setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     @Override

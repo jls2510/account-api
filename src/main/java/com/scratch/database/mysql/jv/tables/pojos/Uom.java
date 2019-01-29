@@ -23,11 +23,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Uom implements Serializable {
 
-    private static final long serialVersionUID = -1650157847;
+    private static final long serialVersionUID = -407960286;
 
-    private final String    id;
-    private final String    name;
-    private final Timestamp createdTs;
+    private String    id;
+    private String    name;
+    private Timestamp createdTs;
+
+    public Uom() {}
 
     public Uom(Uom value) {
         this.id = value.id;
@@ -49,12 +51,27 @@ public class Uom implements Serializable {
         return this.id;
     }
 
+    public Uom setId(String id) {
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return this.name;
     }
 
+    public Uom setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Uom setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

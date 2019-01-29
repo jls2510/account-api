@@ -25,13 +25,15 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ProductCategory implements Serializable {
 
-    private static final long serialVersionUID = -779748399;
+    private static final long serialVersionUID = 1213495763;
 
-    private final ULong     id;
-    private final String    itemNumber;
-    private final ULong     categoryId;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private String    itemNumber;
+    private ULong     categoryId;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public ProductCategory() {}
 
     public ProductCategory(ProductCategory value) {
         this.id = value.id;
@@ -59,20 +61,45 @@ public class ProductCategory implements Serializable {
         return this.id;
     }
 
+    public ProductCategory setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getItemNumber() {
         return this.itemNumber;
+    }
+
+    public ProductCategory setItemNumber(String itemNumber) {
+        this.itemNumber = itemNumber;
+        return this;
     }
 
     public ULong getCategoryId() {
         return this.categoryId;
     }
 
+    public ProductCategory setCategoryId(ULong categoryId) {
+        this.categoryId = categoryId;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public ProductCategory setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public ProductCategory setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

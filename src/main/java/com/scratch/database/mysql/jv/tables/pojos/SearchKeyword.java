@@ -25,13 +25,15 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class SearchKeyword implements Serializable {
 
-    private static final long serialVersionUID = -1507403240;
+    private static final long serialVersionUID = -1836971560;
 
-    private final ULong     id;
-    private final String    searchKeyword;
-    private final String    replacementKeyword;
-    private final Timestamp createdTs;
-    private final Timestamp updatedTs;
+    private ULong     id;
+    private String    searchKeyword;
+    private String    replacementKeyword;
+    private Timestamp createdTs;
+    private Timestamp updatedTs;
+
+    public SearchKeyword() {}
 
     public SearchKeyword(SearchKeyword value) {
         this.id = value.id;
@@ -59,20 +61,45 @@ public class SearchKeyword implements Serializable {
         return this.id;
     }
 
+    public SearchKeyword setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getSearchKeyword() {
         return this.searchKeyword;
+    }
+
+    public SearchKeyword setSearchKeyword(String searchKeyword) {
+        this.searchKeyword = searchKeyword;
+        return this;
     }
 
     public String getReplacementKeyword() {
         return this.replacementKeyword;
     }
 
+    public SearchKeyword setReplacementKeyword(String replacementKeyword) {
+        this.replacementKeyword = replacementKeyword;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public SearchKeyword setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public SearchKeyword setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     @Override

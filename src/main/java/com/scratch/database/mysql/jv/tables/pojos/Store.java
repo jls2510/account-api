@@ -24,9 +24,11 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Store implements Serializable {
 
-    private static final long serialVersionUID = -1057758191;
+    private static final long serialVersionUID = 1275685371;
 
-    private final ULong id;
+    private ULong id;
+
+    public Store() {}
 
     public Store(Store value) {
         this.id = value.id;
@@ -40,6 +42,11 @@ public class Store implements Serializable {
 
     public ULong getId() {
         return this.id;
+    }
+
+    public Store setId(ULong id) {
+        this.id = id;
+        return this;
     }
 
     @Override

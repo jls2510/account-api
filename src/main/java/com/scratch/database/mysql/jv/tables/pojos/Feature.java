@@ -27,22 +27,24 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Feature implements Serializable {
 
-    private static final long serialVersionUID = -378956371;
+    private static final long serialVersionUID = 1399133366;
 
-    private final ULong       id;
-    private final FeatureType type;
-    private final String      featuredId;
-    private final String      title;
-    private final String      description;
-    private final String      imageFilename;
-    private final Integer     sequence;
-    private final Timestamp   startDate;
-    private final Timestamp   endDate;
-    private final Byte        isCarousel;
-    private final Byte        isActive;
-    private final Byte        isDeleted;
-    private final Timestamp   createdTs;
-    private final Timestamp   updatedTs;
+    private ULong       id;
+    private FeatureType type;
+    private String      featuredId;
+    private String      title;
+    private String      description;
+    private String      imageFilename;
+    private Integer     sequence;
+    private Timestamp   startDate;
+    private Timestamp   endDate;
+    private Byte        isCarousel;
+    private Byte        isActive;
+    private Byte        isDeleted;
+    private Timestamp   createdTs;
+    private Timestamp   updatedTs;
+
+    public Feature() {}
 
     public Feature(Feature value) {
         this.id = value.id;
@@ -97,56 +99,126 @@ public class Feature implements Serializable {
         return this.id;
     }
 
+    public Feature setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public FeatureType getType() {
         return this.type;
+    }
+
+    public Feature setType(FeatureType type) {
+        this.type = type;
+        return this;
     }
 
     public String getFeaturedId() {
         return this.featuredId;
     }
 
+    public Feature setFeaturedId(String featuredId) {
+        this.featuredId = featuredId;
+        return this;
+    }
+
     public String getTitle() {
         return this.title;
+    }
+
+    public Feature setTitle(String title) {
+        this.title = title;
+        return this;
     }
 
     public String getDescription() {
         return this.description;
     }
 
+    public Feature setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
     public String getImageFilename() {
         return this.imageFilename;
+    }
+
+    public Feature setImageFilename(String imageFilename) {
+        this.imageFilename = imageFilename;
+        return this;
     }
 
     public Integer getSequence() {
         return this.sequence;
     }
 
+    public Feature setSequence(Integer sequence) {
+        this.sequence = sequence;
+        return this;
+    }
+
     public Timestamp getStartDate() {
         return this.startDate;
+    }
+
+    public Feature setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+        return this;
     }
 
     public Timestamp getEndDate() {
         return this.endDate;
     }
 
+    public Feature setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
+        return this;
+    }
+
     public Byte getIsCarousel() {
         return this.isCarousel;
+    }
+
+    public Feature setIsCarousel(Byte isCarousel) {
+        this.isCarousel = isCarousel;
+        return this;
     }
 
     public Byte getIsActive() {
         return this.isActive;
     }
 
+    public Feature setIsActive(Byte isActive) {
+        this.isActive = isActive;
+        return this;
+    }
+
     public Byte getIsDeleted() {
         return this.isDeleted;
+    }
+
+    public Feature setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
     }
 
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public Feature setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public Feature setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     @Override

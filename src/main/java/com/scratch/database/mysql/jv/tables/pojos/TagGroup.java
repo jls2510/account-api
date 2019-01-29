@@ -27,16 +27,18 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class TagGroup implements Serializable {
 
-    private static final long serialVersionUID = -435739203;
+    private static final long serialVersionUID = 549838429;
 
-    private final ULong             id;
-    private final String            section;
-    private final String            name;
-    private final Byte              isFilter;
-    private final Byte              isrelatable;
-    private final Timestamp         updatedTs;
-    private final Timestamp         createdTs;
-    private final TagGroupConstants constants;
+    private ULong             id;
+    private String            section;
+    private String            name;
+    private Byte              isFilter;
+    private Byte              isrelatable;
+    private Timestamp         updatedTs;
+    private Timestamp         createdTs;
+    private TagGroupConstants constants;
+
+    public TagGroup() {}
 
     public TagGroup(TagGroup value) {
         this.id = value.id;
@@ -73,32 +75,72 @@ public class TagGroup implements Serializable {
         return this.id;
     }
 
+    public TagGroup setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getSection() {
         return this.section;
+    }
+
+    public TagGroup setSection(String section) {
+        this.section = section;
+        return this;
     }
 
     public String getName() {
         return this.name;
     }
 
+    public TagGroup setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public Byte getIsFilter() {
         return this.isFilter;
+    }
+
+    public TagGroup setIsFilter(Byte isFilter) {
+        this.isFilter = isFilter;
+        return this;
     }
 
     public Byte getIsrelatable() {
         return this.isrelatable;
     }
 
+    public TagGroup setIsrelatable(Byte isrelatable) {
+        this.isrelatable = isrelatable;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public TagGroup setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public TagGroup setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public TagGroupConstants getConstants() {
         return this.constants;
+    }
+
+    public TagGroup setConstants(TagGroupConstants constants) {
+        this.constants = constants;
+        return this;
     }
 
     @Override

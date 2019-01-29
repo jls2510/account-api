@@ -48,7 +48,7 @@
         <generate>
             <fluentSetters>true</fluentSetters>
             <pojos>true</pojos>
-            <immutablePojos>true</immutablePojos>
+            <!--<immutablePojos>true</immutablePojos>-->
             <daos>true</daos>
         </generate>
     </generator>

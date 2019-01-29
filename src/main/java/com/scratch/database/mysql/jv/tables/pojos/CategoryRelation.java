@@ -25,14 +25,16 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class CategoryRelation implements Serializable {
 
-    private static final long serialVersionUID = 1166438360;
+    private static final long serialVersionUID = 1298038097;
 
-    private final ULong     id;
-    private final ULong     categoryId;
-    private final ULong     parentId;
-    private final Integer   sequence;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private ULong     categoryId;
+    private ULong     parentId;
+    private Integer   sequence;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public CategoryRelation() {}
 
     public CategoryRelation(CategoryRelation value) {
         this.id = value.id;
@@ -63,24 +65,54 @@ public class CategoryRelation implements Serializable {
         return this.id;
     }
 
+    public CategoryRelation setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getCategoryId() {
         return this.categoryId;
+    }
+
+    public CategoryRelation setCategoryId(ULong categoryId) {
+        this.categoryId = categoryId;
+        return this;
     }
 
     public ULong getParentId() {
         return this.parentId;
     }
 
+    public CategoryRelation setParentId(ULong parentId) {
+        this.parentId = parentId;
+        return this;
+    }
+
     public Integer getSequence() {
         return this.sequence;
+    }
+
+    public CategoryRelation setSequence(Integer sequence) {
+        this.sequence = sequence;
+        return this;
     }
 
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public CategoryRelation setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public CategoryRelation setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

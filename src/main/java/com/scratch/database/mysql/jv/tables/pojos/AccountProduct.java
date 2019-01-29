@@ -25,12 +25,14 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AccountProduct implements Serializable {
 
-    private static final long serialVersionUID = 947859780;
+    private static final long serialVersionUID = 1312746488;
 
-    private final ULong     id;
-    private final Long      accountId;
-    private final String    itemNumber;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private Long      accountId;
+    private String    itemNumber;
+    private Timestamp createdTs;
+
+    public AccountProduct() {}
 
     public AccountProduct(AccountProduct value) {
         this.id = value.id;
@@ -55,16 +57,36 @@ public class AccountProduct implements Serializable {
         return this.id;
     }
 
+    public AccountProduct setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public Long getAccountId() {
         return this.accountId;
+    }
+
+    public AccountProduct setAccountId(Long accountId) {
+        this.accountId = accountId;
+        return this;
     }
 
     public String getItemNumber() {
         return this.itemNumber;
     }
 
+    public AccountProduct setItemNumber(String itemNumber) {
+        this.itemNumber = itemNumber;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public AccountProduct setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

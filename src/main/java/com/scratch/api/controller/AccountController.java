@@ -60,8 +60,9 @@ public class AccountController {
      * @return
      */
     @GET
-    @Path("/{id}")
+    @Path("/id/{id}")
     public Response getById(@PathParam("id") int id) {
+        System.out.println("AccountController.getById()");
         List<Account> result = new ArrayList<Account>();
 
         try {
@@ -77,6 +78,30 @@ public class AccountController {
 
         return toJsonResponse(result);
     } // getById()
+
+    /**
+     * @param username
+     * @return
+     */
+    @GET
+    @Path("/username/{username}")
+    public Response getByUsername(@PathParam("username") String username) {
+        System.out.println("AccountController.getById()");
+        List<Account> result = new ArrayList<Account>();
+
+        try {
+            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            result.add(new AccountDao(configuration).fetchOneByUsername(username));
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            log.error(e.getMessage());
+            return new ExceptionJsonResponse().toResponse(e);
+        }
+
+        return toJsonResponse(result);
+    } // getByUsername()
 
     /**
      * @return
@@ -100,59 +125,103 @@ public class AccountController {
     } // getList()
 
 
-//@POST
-//    fun create(AccountData: Account): Response {
-//            val result = mutableListOf<Account>()
-//
-//        try {
-//        result.add(AccountRecord))
-//
-//        } catch (e: Exception) {
-//        log.error(e.message)
-//        return ExceptionJsonResponse().toResponse(e)
-//        }
-//
-//        return toJsonResponse(result)
-//        } // create ()
-//
-//
-//@PUT
-//@Path("/{id}")
-//    fun update(AccountResult: Account, @PathParam("id") id: Int): Response {
-//        val result = mutableListOf<AccountRecord>()
-//
-//        try {
-//        val signature: String? = AccountResult.tosSignature
-//        val title: String? = AccountResult.tosTitle
-//        if (signature == null || title == null || signature.isBlank() || title.isBlank()) {
-//        throw HttpPassThruException(App.config("error_message") + " Error: Input Parameters Missing.")
-//        } else {
-//        val AccountData = Account.agreeTos(id, signature, title)
-//        result.add(AccountData)
-//        }
-//        } catch (e: Exception) {
-//        log.error(e.message)
-//        return ExceptionJsonResponse().toResponse(e)
-//        }
-//
-//        return toJsonResponse(result)
-//        } // update()
-//
-//@DELETE
-//@Path("/{auditId}")
-//    fun cancel(@PathParam("auditId") auditId: Int): Response {
-//        val result = mutableListOf<AccountRecord>()
-//
-//        try {
-//        AccountBuilder.cancelSelection(auditId)
-//        } catch (e: Exception) {
-//        log.error(e.message)
-//        return ExceptionJsonResponse().toResponse(e)
-//        }
-//
-//        return toJsonResponse(result)
-//        } // cancel()
-//
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response create(Account accountData) {
+        System.out.println("AccountController.create()");
+
+        Account accountAsCreated = null;
+
+        try {
+            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            AccountDao accountDao = new AccountDao(configuration);
+
+            accountDao.insert(accountData);
+
+            // we want to return the record AS CREATED
+            // AccountDao does not return the record, so as a work-around we will re-fetch it by username
+            accountAsCreated = accountDao.fetchOneByUsername(accountData.getUsername());
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            log.error(e.getMessage());
+            return new ExceptionJsonResponse().toResponse(e);
+        }
+
+        //return toJsonResponse(result);
+        return Response
+                .status(201)
+                .entity(accountAsCreated)
+                .build();
+
+    } // create()
+
+
+    @PUT
+    @Path("/update/{id}")
+    public Response update(Account account, @PathParam("id") int id) {
+        System.out.println("AccountController.update()");
+
+        String output = account.toString();
+
+        try {
+            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            AccountDao accountDao = new AccountDao(configuration);
+
+            account.setId(ULong.valueOf((long)id)); // in case it's not set as received
+
+            accountDao.update(account);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            log.error(e.getMessage());
+            return new ExceptionJsonResponse().toResponse(e);
+        }
+
+        //return toJsonResponse(result);
+        return Response
+                .status(204)
+                .entity("{'success': true}")
+                .build();
+
+    } // update()
+
+
+    @DELETE
+    @Path("/delete/{id}")
+    public Response deleteById(@PathParam("id") int id) {
+        System.out.println("AccountController.deleteById()");
+
+        try {
+            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            AccountDao accountDao = new AccountDao(configuration);
+
+            if (id > 0) {
+                accountDao.deleteById(ULong.valueOf((long) id));
+            } else {
+                return Response
+                        .status(304)
+                        .entity("{'success': false}")
+                        .build();
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            log.error(e.getMessage());
+            return new ExceptionJsonResponse().toResponse(e);
+        }
+
+        return Response
+                .status(204)
+                .entity("{'success': true}")
+                .build();
+
+    } // deleteById()
+
 
     /**
      * @param result

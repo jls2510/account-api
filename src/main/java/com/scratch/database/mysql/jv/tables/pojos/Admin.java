@@ -25,13 +25,15 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Admin implements Serializable {
 
-    private static final long serialVersionUID = 813741559;
+    private static final long serialVersionUID = 1696473053;
 
-    private final ULong     id;
-    private final String    username;
-    private final String    password;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
+    private ULong     id;
+    private String    username;
+    private String    password;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+
+    public Admin() {}
 
     public Admin(Admin value) {
         this.id = value.id;
@@ -59,20 +61,45 @@ public class Admin implements Serializable {
         return this.id;
     }
 
+    public Admin setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getUsername() {
         return this.username;
+    }
+
+    public Admin setUsername(String username) {
+        this.username = username;
+        return this;
     }
 
     public String getPassword() {
         return this.password;
     }
 
+    public Admin setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Admin setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Admin setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     @Override

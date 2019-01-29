@@ -25,11 +25,13 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ProductPrice implements Serializable {
 
-    private static final long serialVersionUID = -1621811162;
+    private static final long serialVersionUID = -1349834410;
 
-    private final ULong      id;
-    private final String     itemNumber;
-    private final BigDecimal price;
+    private ULong      id;
+    private String     itemNumber;
+    private BigDecimal price;
+
+    public ProductPrice() {}
 
     public ProductPrice(ProductPrice value) {
         this.id = value.id;
@@ -51,12 +53,27 @@ public class ProductPrice implements Serializable {
         return this.id;
     }
 
+    public ProductPrice setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getItemNumber() {
         return this.itemNumber;
     }
 
+    public ProductPrice setItemNumber(String itemNumber) {
+        this.itemNumber = itemNumber;
+        return this;
+    }
+
     public BigDecimal getPrice() {
         return this.price;
+    }
+
+    public ProductPrice setPrice(BigDecimal price) {
+        this.price = price;
+        return this;
     }
 
     @Override

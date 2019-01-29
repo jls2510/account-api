@@ -26,32 +26,34 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class OrderItem implements Serializable {
 
-    private static final long serialVersionUID = 1956443670;
+    private static final long serialVersionUID = -847055681;
 
-    private final ULong      id;
-    private final ULong      orderId;
-    private final String     itemNumber;
-    private final String     itemDescription;
-    private final BigDecimal price;
-    private final BigDecimal quantity;
-    private final Byte       perishable;
-    private final Integer    discountPercent;
-    private final BigDecimal discountPrice;
-    private final String     promoCode;
-    private final BigDecimal weight;
-    private final String     weightUom;
-    private final Byte       isTaxable;
-    private final BigDecimal tax;
-    private final String     salesTaxCode;
-    private final ULong      promotionId;
-    private final BigDecimal qtyShip;
-    private final String     catchWeight;
-    private final BigDecimal catchWeightPrice;
-    private final BigDecimal refundAmount;
-    private final BigDecimal refundQty;
-    private final Timestamp  refundEmailTs;
-    private final Timestamp  createdTs;
-    private final Timestamp  updatedTs;
+    private ULong      id;
+    private ULong      orderId;
+    private String     itemNumber;
+    private String     itemDescription;
+    private BigDecimal price;
+    private BigDecimal quantity;
+    private Byte       perishable;
+    private Integer    discountPercent;
+    private BigDecimal discountPrice;
+    private String     promoCode;
+    private BigDecimal weight;
+    private String     weightUom;
+    private Byte       isTaxable;
+    private BigDecimal tax;
+    private String     salesTaxCode;
+    private ULong      promotionId;
+    private BigDecimal qtyShip;
+    private String     catchWeight;
+    private BigDecimal catchWeightPrice;
+    private BigDecimal refundAmount;
+    private BigDecimal refundQty;
+    private Timestamp  refundEmailTs;
+    private Timestamp  createdTs;
+    private Timestamp  updatedTs;
+
+    public OrderItem() {}
 
     public OrderItem(OrderItem value) {
         this.id = value.id;
@@ -136,96 +138,216 @@ public class OrderItem implements Serializable {
         return this.id;
     }
 
+    public OrderItem setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public ULong getOrderId() {
         return this.orderId;
+    }
+
+    public OrderItem setOrderId(ULong orderId) {
+        this.orderId = orderId;
+        return this;
     }
 
     public String getItemNumber() {
         return this.itemNumber;
     }
 
+    public OrderItem setItemNumber(String itemNumber) {
+        this.itemNumber = itemNumber;
+        return this;
+    }
+
     public String getItemDescription() {
         return this.itemDescription;
+    }
+
+    public OrderItem setItemDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+        return this;
     }
 
     public BigDecimal getPrice() {
         return this.price;
     }
 
+    public OrderItem setPrice(BigDecimal price) {
+        this.price = price;
+        return this;
+    }
+
     public BigDecimal getQuantity() {
         return this.quantity;
+    }
+
+    public OrderItem setQuantity(BigDecimal quantity) {
+        this.quantity = quantity;
+        return this;
     }
 
     public Byte getPerishable() {
         return this.perishable;
     }
 
+    public OrderItem setPerishable(Byte perishable) {
+        this.perishable = perishable;
+        return this;
+    }
+
     public Integer getDiscountPercent() {
         return this.discountPercent;
+    }
+
+    public OrderItem setDiscountPercent(Integer discountPercent) {
+        this.discountPercent = discountPercent;
+        return this;
     }
 
     public BigDecimal getDiscountPrice() {
         return this.discountPrice;
     }
 
+    public OrderItem setDiscountPrice(BigDecimal discountPrice) {
+        this.discountPrice = discountPrice;
+        return this;
+    }
+
     public String getPromoCode() {
         return this.promoCode;
+    }
+
+    public OrderItem setPromoCode(String promoCode) {
+        this.promoCode = promoCode;
+        return this;
     }
 
     public BigDecimal getWeight() {
         return this.weight;
     }
 
+    public OrderItem setWeight(BigDecimal weight) {
+        this.weight = weight;
+        return this;
+    }
+
     public String getWeightUom() {
         return this.weightUom;
+    }
+
+    public OrderItem setWeightUom(String weightUom) {
+        this.weightUom = weightUom;
+        return this;
     }
 
     public Byte getIsTaxable() {
         return this.isTaxable;
     }
 
+    public OrderItem setIsTaxable(Byte isTaxable) {
+        this.isTaxable = isTaxable;
+        return this;
+    }
+
     public BigDecimal getTax() {
         return this.tax;
+    }
+
+    public OrderItem setTax(BigDecimal tax) {
+        this.tax = tax;
+        return this;
     }
 
     public String getSalesTaxCode() {
         return this.salesTaxCode;
     }
 
+    public OrderItem setSalesTaxCode(String salesTaxCode) {
+        this.salesTaxCode = salesTaxCode;
+        return this;
+    }
+
     public ULong getPromotionId() {
         return this.promotionId;
+    }
+
+    public OrderItem setPromotionId(ULong promotionId) {
+        this.promotionId = promotionId;
+        return this;
     }
 
     public BigDecimal getQtyShip() {
         return this.qtyShip;
     }
 
+    public OrderItem setQtyShip(BigDecimal qtyShip) {
+        this.qtyShip = qtyShip;
+        return this;
+    }
+
     public String getCatchWeight() {
         return this.catchWeight;
+    }
+
+    public OrderItem setCatchWeight(String catchWeight) {
+        this.catchWeight = catchWeight;
+        return this;
     }
 
     public BigDecimal getCatchWeightPrice() {
         return this.catchWeightPrice;
     }
 
+    public OrderItem setCatchWeightPrice(BigDecimal catchWeightPrice) {
+        this.catchWeightPrice = catchWeightPrice;
+        return this;
+    }
+
     public BigDecimal getRefundAmount() {
         return this.refundAmount;
+    }
+
+    public OrderItem setRefundAmount(BigDecimal refundAmount) {
+        this.refundAmount = refundAmount;
+        return this;
     }
 
     public BigDecimal getRefundQty() {
         return this.refundQty;
     }
 
+    public OrderItem setRefundQty(BigDecimal refundQty) {
+        this.refundQty = refundQty;
+        return this;
+    }
+
     public Timestamp getRefundEmailTs() {
         return this.refundEmailTs;
+    }
+
+    public OrderItem setRefundEmailTs(Timestamp refundEmailTs) {
+        this.refundEmailTs = refundEmailTs;
+        return this;
     }
 
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public OrderItem setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public OrderItem setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     @Override

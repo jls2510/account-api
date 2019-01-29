@@ -29,76 +29,78 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Order implements Serializable {
 
-    private static final long serialVersionUID = -207642568;
+    private static final long serialVersionUID = -1355673883;
 
-    private final ULong                      id;
-    private final String                     sessionId;
-    private final String                     s2kOrderNumber;
-    private final String                     stripeSourceId;
-    private final String                     stripeCustomerId;
-    private final String                     stripeChargeId;
-    private final BigDecimal                 stripeCapturedAmount;
-    private final Timestamp                  stripeCapturedTs;
-    private final String                     s2kStatus;
-    private final String                     s2kStatusDescription;
-    private final ULong                      accountId;
-    private final String                     orderDate;
-    private final BigDecimal                 productTotal;
-    private final BigDecimal                 freight;
-    private final BigDecimal                 orderTotal;
-    private final Byte                       giftFlag;
-    private final Byte                       giftReceipt;
-    private final String                     giftMessage;
-    private final String                     shipVia;
-    private final String                     shipMethod;
-    private final String                     shipClassification;
-    private final String                     promoCode;
-    private final Integer                    shippingDiscountPercent;
-    private final BigDecimal                 shippingDiscountAmount;
-    private final OrderShippingPromotionType shippingPromotionType;
-    private final BigDecimal                 shippingPromotionAmount;
-    private final String                     shippingPromotionMethod;
-    private final String                     billToZip;
-    private final String                     billToEmail;
-    private final String                     shipToName;
-    private final String                     shipToAddress1;
-    private final String                     shipToAddress2;
-    private final String                     shipToCity;
-    private final String                     shipToState;
-    private final String                     shipToZip;
-    private final String                     shipToCountry;
-    private final String                     shipToPhone;
-    private final Byte                       placeholder;
-    private final OrderOrderStatus           orderStatus;
-    private final String                     shipToCareOf;
-    private final String                     billToCareOf;
-    private final String                     shippingStatus;
-    private final String                     trackingNumber;
-    private final String                     poNumber;
-    private final String                     soNumber;
-    private final BigDecimal                 weight;
-    private final String                     weightUom;
-    private final BigDecimal                 taxTotal;
-    private final BigDecimal                 taxRateState;
-    private final BigDecimal                 taxRateCnty;
-    private final BigDecimal                 taxRateLocal_1;
-    private final BigDecimal                 taxRateLocal_2;
-    private final Byte                       hasPerishables;
-    private final Byte                       hasNonperishables;
-    private final BigDecimal                 cubicVolume;
-    private final String                     cubicVolumeUom;
-    private final BigDecimal                 refundFreight;
-    private final BigDecimal                 refundTotal;
-    private final Integer                    s2kRetryCount;
-    private final Timestamp                  s2kRetryTs;
-    private final String                     s2kPayload;
-    private final String                     s2kResponse;
-    private final String                     s2kErrorMessage;
-    private final String                     taxPayload;
-    private final String                     taxResponse;
-    private final Timestamp                  createdTs;
-    private final Timestamp                  updatedTs;
-    private final Byte                       isDeleted;
+    private ULong                      id;
+    private String                     sessionId;
+    private String                     s2kOrderNumber;
+    private String                     stripeSourceId;
+    private String                     stripeCustomerId;
+    private String                     stripeChargeId;
+    private BigDecimal                 stripeCapturedAmount;
+    private Timestamp                  stripeCapturedTs;
+    private String                     s2kStatus;
+    private String                     s2kStatusDescription;
+    private ULong                      accountId;
+    private String                     orderDate;
+    private BigDecimal                 productTotal;
+    private BigDecimal                 freight;
+    private BigDecimal                 orderTotal;
+    private Byte                       giftFlag;
+    private Byte                       giftReceipt;
+    private String                     giftMessage;
+    private String                     shipVia;
+    private String                     shipMethod;
+    private String                     shipClassification;
+    private String                     promoCode;
+    private Integer                    shippingDiscountPercent;
+    private BigDecimal                 shippingDiscountAmount;
+    private OrderShippingPromotionType shippingPromotionType;
+    private BigDecimal                 shippingPromotionAmount;
+    private String                     shippingPromotionMethod;
+    private String                     billToZip;
+    private String                     billToEmail;
+    private String                     shipToName;
+    private String                     shipToAddress1;
+    private String                     shipToAddress2;
+    private String                     shipToCity;
+    private String                     shipToState;
+    private String                     shipToZip;
+    private String                     shipToCountry;
+    private String                     shipToPhone;
+    private Byte                       placeholder;
+    private OrderOrderStatus           orderStatus;
+    private String                     shipToCareOf;
+    private String                     billToCareOf;
+    private String                     shippingStatus;
+    private String                     trackingNumber;
+    private String                     poNumber;
+    private String                     soNumber;
+    private BigDecimal                 weight;
+    private String                     weightUom;
+    private BigDecimal                 taxTotal;
+    private BigDecimal                 taxRateState;
+    private BigDecimal                 taxRateCnty;
+    private BigDecimal                 taxRateLocal_1;
+    private BigDecimal                 taxRateLocal_2;
+    private Byte                       hasPerishables;
+    private Byte                       hasNonperishables;
+    private BigDecimal                 cubicVolume;
+    private String                     cubicVolumeUom;
+    private BigDecimal                 refundFreight;
+    private BigDecimal                 refundTotal;
+    private Integer                    s2kRetryCount;
+    private Timestamp                  s2kRetryTs;
+    private String                     s2kPayload;
+    private String                     s2kResponse;
+    private String                     s2kErrorMessage;
+    private String                     taxPayload;
+    private String                     taxResponse;
+    private Timestamp                  createdTs;
+    private Timestamp                  updatedTs;
+    private Byte                       isDeleted;
+
+    public Order() {}
 
     public Order(Order value) {
         this.id = value.id;
@@ -315,272 +317,612 @@ public class Order implements Serializable {
         return this.id;
     }
 
+    public Order setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getSessionId() {
         return this.sessionId;
+    }
+
+    public Order setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+        return this;
     }
 
     public String getS2kOrderNumber() {
         return this.s2kOrderNumber;
     }
 
+    public Order setS2kOrderNumber(String s2kOrderNumber) {
+        this.s2kOrderNumber = s2kOrderNumber;
+        return this;
+    }
+
     public String getStripeSourceId() {
         return this.stripeSourceId;
+    }
+
+    public Order setStripeSourceId(String stripeSourceId) {
+        this.stripeSourceId = stripeSourceId;
+        return this;
     }
 
     public String getStripeCustomerId() {
         return this.stripeCustomerId;
     }
 
+    public Order setStripeCustomerId(String stripeCustomerId) {
+        this.stripeCustomerId = stripeCustomerId;
+        return this;
+    }
+
     public String getStripeChargeId() {
         return this.stripeChargeId;
+    }
+
+    public Order setStripeChargeId(String stripeChargeId) {
+        this.stripeChargeId = stripeChargeId;
+        return this;
     }
 
     public BigDecimal getStripeCapturedAmount() {
         return this.stripeCapturedAmount;
     }
 
+    public Order setStripeCapturedAmount(BigDecimal stripeCapturedAmount) {
+        this.stripeCapturedAmount = stripeCapturedAmount;
+        return this;
+    }
+
     public Timestamp getStripeCapturedTs() {
         return this.stripeCapturedTs;
+    }
+
+    public Order setStripeCapturedTs(Timestamp stripeCapturedTs) {
+        this.stripeCapturedTs = stripeCapturedTs;
+        return this;
     }
 
     public String getS2kStatus() {
         return this.s2kStatus;
     }
 
+    public Order setS2kStatus(String s2kStatus) {
+        this.s2kStatus = s2kStatus;
+        return this;
+    }
+
     public String getS2kStatusDescription() {
         return this.s2kStatusDescription;
+    }
+
+    public Order setS2kStatusDescription(String s2kStatusDescription) {
+        this.s2kStatusDescription = s2kStatusDescription;
+        return this;
     }
 
     public ULong getAccountId() {
         return this.accountId;
     }
 
+    public Order setAccountId(ULong accountId) {
+        this.accountId = accountId;
+        return this;
+    }
+
     public String getOrderDate() {
         return this.orderDate;
+    }
+
+    public Order setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
+        return this;
     }
 
     public BigDecimal getProductTotal() {
         return this.productTotal;
     }
 
+    public Order setProductTotal(BigDecimal productTotal) {
+        this.productTotal = productTotal;
+        return this;
+    }
+
     public BigDecimal getFreight() {
         return this.freight;
+    }
+
+    public Order setFreight(BigDecimal freight) {
+        this.freight = freight;
+        return this;
     }
 
     public BigDecimal getOrderTotal() {
         return this.orderTotal;
     }
 
+    public Order setOrderTotal(BigDecimal orderTotal) {
+        this.orderTotal = orderTotal;
+        return this;
+    }
+
     public Byte getGiftFlag() {
         return this.giftFlag;
+    }
+
+    public Order setGiftFlag(Byte giftFlag) {
+        this.giftFlag = giftFlag;
+        return this;
     }
 
     public Byte getGiftReceipt() {
         return this.giftReceipt;
     }
 
+    public Order setGiftReceipt(Byte giftReceipt) {
+        this.giftReceipt = giftReceipt;
+        return this;
+    }
+
     public String getGiftMessage() {
         return this.giftMessage;
+    }
+
+    public Order setGiftMessage(String giftMessage) {
+        this.giftMessage = giftMessage;
+        return this;
     }
 
     public String getShipVia() {
         return this.shipVia;
     }
 
+    public Order setShipVia(String shipVia) {
+        this.shipVia = shipVia;
+        return this;
+    }
+
     public String getShipMethod() {
         return this.shipMethod;
+    }
+
+    public Order setShipMethod(String shipMethod) {
+        this.shipMethod = shipMethod;
+        return this;
     }
 
     public String getShipClassification() {
         return this.shipClassification;
     }
 
+    public Order setShipClassification(String shipClassification) {
+        this.shipClassification = shipClassification;
+        return this;
+    }
+
     public String getPromoCode() {
         return this.promoCode;
+    }
+
+    public Order setPromoCode(String promoCode) {
+        this.promoCode = promoCode;
+        return this;
     }
 
     public Integer getShippingDiscountPercent() {
         return this.shippingDiscountPercent;
     }
 
+    public Order setShippingDiscountPercent(Integer shippingDiscountPercent) {
+        this.shippingDiscountPercent = shippingDiscountPercent;
+        return this;
+    }
+
     public BigDecimal getShippingDiscountAmount() {
         return this.shippingDiscountAmount;
+    }
+
+    public Order setShippingDiscountAmount(BigDecimal shippingDiscountAmount) {
+        this.shippingDiscountAmount = shippingDiscountAmount;
+        return this;
     }
 
     public OrderShippingPromotionType getShippingPromotionType() {
         return this.shippingPromotionType;
     }
 
+    public Order setShippingPromotionType(OrderShippingPromotionType shippingPromotionType) {
+        this.shippingPromotionType = shippingPromotionType;
+        return this;
+    }
+
     public BigDecimal getShippingPromotionAmount() {
         return this.shippingPromotionAmount;
+    }
+
+    public Order setShippingPromotionAmount(BigDecimal shippingPromotionAmount) {
+        this.shippingPromotionAmount = shippingPromotionAmount;
+        return this;
     }
 
     public String getShippingPromotionMethod() {
         return this.shippingPromotionMethod;
     }
 
+    public Order setShippingPromotionMethod(String shippingPromotionMethod) {
+        this.shippingPromotionMethod = shippingPromotionMethod;
+        return this;
+    }
+
     public String getBillToZip() {
         return this.billToZip;
+    }
+
+    public Order setBillToZip(String billToZip) {
+        this.billToZip = billToZip;
+        return this;
     }
 
     public String getBillToEmail() {
         return this.billToEmail;
     }
 
+    public Order setBillToEmail(String billToEmail) {
+        this.billToEmail = billToEmail;
+        return this;
+    }
+
     public String getShipToName() {
         return this.shipToName;
+    }
+
+    public Order setShipToName(String shipToName) {
+        this.shipToName = shipToName;
+        return this;
     }
 
     public String getShipToAddress1() {
         return this.shipToAddress1;
     }
 
+    public Order setShipToAddress1(String shipToAddress1) {
+        this.shipToAddress1 = shipToAddress1;
+        return this;
+    }
+
     public String getShipToAddress2() {
         return this.shipToAddress2;
+    }
+
+    public Order setShipToAddress2(String shipToAddress2) {
+        this.shipToAddress2 = shipToAddress2;
+        return this;
     }
 
     public String getShipToCity() {
         return this.shipToCity;
     }
 
+    public Order setShipToCity(String shipToCity) {
+        this.shipToCity = shipToCity;
+        return this;
+    }
+
     public String getShipToState() {
         return this.shipToState;
+    }
+
+    public Order setShipToState(String shipToState) {
+        this.shipToState = shipToState;
+        return this;
     }
 
     public String getShipToZip() {
         return this.shipToZip;
     }
 
+    public Order setShipToZip(String shipToZip) {
+        this.shipToZip = shipToZip;
+        return this;
+    }
+
     public String getShipToCountry() {
         return this.shipToCountry;
+    }
+
+    public Order setShipToCountry(String shipToCountry) {
+        this.shipToCountry = shipToCountry;
+        return this;
     }
 
     public String getShipToPhone() {
         return this.shipToPhone;
     }
 
+    public Order setShipToPhone(String shipToPhone) {
+        this.shipToPhone = shipToPhone;
+        return this;
+    }
+
     public Byte getPlaceholder() {
         return this.placeholder;
+    }
+
+    public Order setPlaceholder(Byte placeholder) {
+        this.placeholder = placeholder;
+        return this;
     }
 
     public OrderOrderStatus getOrderStatus() {
         return this.orderStatus;
     }
 
+    public Order setOrderStatus(OrderOrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+        return this;
+    }
+
     public String getShipToCareOf() {
         return this.shipToCareOf;
+    }
+
+    public Order setShipToCareOf(String shipToCareOf) {
+        this.shipToCareOf = shipToCareOf;
+        return this;
     }
 
     public String getBillToCareOf() {
         return this.billToCareOf;
     }
 
+    public Order setBillToCareOf(String billToCareOf) {
+        this.billToCareOf = billToCareOf;
+        return this;
+    }
+
     public String getShippingStatus() {
         return this.shippingStatus;
+    }
+
+    public Order setShippingStatus(String shippingStatus) {
+        this.shippingStatus = shippingStatus;
+        return this;
     }
 
     public String getTrackingNumber() {
         return this.trackingNumber;
     }
 
+    public Order setTrackingNumber(String trackingNumber) {
+        this.trackingNumber = trackingNumber;
+        return this;
+    }
+
     public String getPoNumber() {
         return this.poNumber;
+    }
+
+    public Order setPoNumber(String poNumber) {
+        this.poNumber = poNumber;
+        return this;
     }
 
     public String getSoNumber() {
         return this.soNumber;
     }
 
+    public Order setSoNumber(String soNumber) {
+        this.soNumber = soNumber;
+        return this;
+    }
+
     public BigDecimal getWeight() {
         return this.weight;
+    }
+
+    public Order setWeight(BigDecimal weight) {
+        this.weight = weight;
+        return this;
     }
 
     public String getWeightUom() {
         return this.weightUom;
     }
 
+    public Order setWeightUom(String weightUom) {
+        this.weightUom = weightUom;
+        return this;
+    }
+
     public BigDecimal getTaxTotal() {
         return this.taxTotal;
+    }
+
+    public Order setTaxTotal(BigDecimal taxTotal) {
+        this.taxTotal = taxTotal;
+        return this;
     }
 
     public BigDecimal getTaxRateState() {
         return this.taxRateState;
     }
 
+    public Order setTaxRateState(BigDecimal taxRateState) {
+        this.taxRateState = taxRateState;
+        return this;
+    }
+
     public BigDecimal getTaxRateCnty() {
         return this.taxRateCnty;
+    }
+
+    public Order setTaxRateCnty(BigDecimal taxRateCnty) {
+        this.taxRateCnty = taxRateCnty;
+        return this;
     }
 
     public BigDecimal getTaxRateLocal_1() {
         return this.taxRateLocal_1;
     }
 
+    public Order setTaxRateLocal_1(BigDecimal taxRateLocal_1) {
+        this.taxRateLocal_1 = taxRateLocal_1;
+        return this;
+    }
+
     public BigDecimal getTaxRateLocal_2() {
         return this.taxRateLocal_2;
+    }
+
+    public Order setTaxRateLocal_2(BigDecimal taxRateLocal_2) {
+        this.taxRateLocal_2 = taxRateLocal_2;
+        return this;
     }
 
     public Byte getHasPerishables() {
         return this.hasPerishables;
     }
 
+    public Order setHasPerishables(Byte hasPerishables) {
+        this.hasPerishables = hasPerishables;
+        return this;
+    }
+
     public Byte getHasNonperishables() {
         return this.hasNonperishables;
+    }
+
+    public Order setHasNonperishables(Byte hasNonperishables) {
+        this.hasNonperishables = hasNonperishables;
+        return this;
     }
 
     public BigDecimal getCubicVolume() {
         return this.cubicVolume;
     }
 
+    public Order setCubicVolume(BigDecimal cubicVolume) {
+        this.cubicVolume = cubicVolume;
+        return this;
+    }
+
     public String getCubicVolumeUom() {
         return this.cubicVolumeUom;
+    }
+
+    public Order setCubicVolumeUom(String cubicVolumeUom) {
+        this.cubicVolumeUom = cubicVolumeUom;
+        return this;
     }
 
     public BigDecimal getRefundFreight() {
         return this.refundFreight;
     }
 
+    public Order setRefundFreight(BigDecimal refundFreight) {
+        this.refundFreight = refundFreight;
+        return this;
+    }
+
     public BigDecimal getRefundTotal() {
         return this.refundTotal;
+    }
+
+    public Order setRefundTotal(BigDecimal refundTotal) {
+        this.refundTotal = refundTotal;
+        return this;
     }
 
     public Integer getS2kRetryCount() {
         return this.s2kRetryCount;
     }
 
+    public Order setS2kRetryCount(Integer s2kRetryCount) {
+        this.s2kRetryCount = s2kRetryCount;
+        return this;
+    }
+
     public Timestamp getS2kRetryTs() {
         return this.s2kRetryTs;
+    }
+
+    public Order setS2kRetryTs(Timestamp s2kRetryTs) {
+        this.s2kRetryTs = s2kRetryTs;
+        return this;
     }
 
     public String getS2kPayload() {
         return this.s2kPayload;
     }
 
+    public Order setS2kPayload(String s2kPayload) {
+        this.s2kPayload = s2kPayload;
+        return this;
+    }
+
     public String getS2kResponse() {
         return this.s2kResponse;
+    }
+
+    public Order setS2kResponse(String s2kResponse) {
+        this.s2kResponse = s2kResponse;
+        return this;
     }
 
     public String getS2kErrorMessage() {
         return this.s2kErrorMessage;
     }
 
+    public Order setS2kErrorMessage(String s2kErrorMessage) {
+        this.s2kErrorMessage = s2kErrorMessage;
+        return this;
+    }
+
     public String getTaxPayload() {
         return this.taxPayload;
+    }
+
+    public Order setTaxPayload(String taxPayload) {
+        this.taxPayload = taxPayload;
+        return this;
     }
 
     public String getTaxResponse() {
         return this.taxResponse;
     }
 
+    public Order setTaxResponse(String taxResponse) {
+        this.taxResponse = taxResponse;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
+    }
+
+    public Order setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
     }
 
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Order setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Byte getIsDeleted() {
         return this.isDeleted;
+    }
+
+    public Order setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
     }
 
     @Override

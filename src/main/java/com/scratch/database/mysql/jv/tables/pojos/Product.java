@@ -26,40 +26,42 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Product implements Serializable {
 
-    private static final long serialVersionUID = 606926880;
+    private static final long serialVersionUID = -655116408;
 
-    private final ULong      id;
-    private final String     itemNumber;
-    private final String     description_1;
-    private final String     description_2;
-    private final String     uom;
-    private final String     packageSize;
-    private final String     brand;
-    private final String     brandName;
-    private final Byte       perishable;
-    private final String     salesTaxCode;
-    private final BigDecimal itemWeight;
-    private final String     itemWeightUom;
-    private final String     shortDescription;
-    private final String     longDescription;
-    private final String     replacementItemNumber;
-    private final String     displayName;
-    private final String     url;
-    private final String     metaTitle;
-    private final String     metaDescription;
-    private final Byte       isGiftable;
-    private final Byte       isPromotable;
-    private final Byte       isDeleted;
-    private final Byte       isActive;
-    private final Timestamp  updatedTs;
-    private final Timestamp  createdTs;
-    private final BigDecimal cubicVolume;
-    private final String     cubicVolumeUom;
-    private final String     catchWeight;
-    private final String     catchWeightUom;
-    private final BigDecimal averageWeight;
-    private final BigDecimal varianceOver;
-    private final BigDecimal varianceUnder;
+    private ULong      id;
+    private String     itemNumber;
+    private String     description_1;
+    private String     description_2;
+    private String     uom;
+    private String     packageSize;
+    private String     brand;
+    private String     brandName;
+    private Byte       perishable;
+    private String     salesTaxCode;
+    private BigDecimal itemWeight;
+    private String     itemWeightUom;
+    private String     shortDescription;
+    private String     longDescription;
+    private String     replacementItemNumber;
+    private String     displayName;
+    private String     url;
+    private String     metaTitle;
+    private String     metaDescription;
+    private Byte       isGiftable;
+    private Byte       isPromotable;
+    private Byte       isDeleted;
+    private Byte       isActive;
+    private Timestamp  updatedTs;
+    private Timestamp  createdTs;
+    private BigDecimal cubicVolume;
+    private String     cubicVolumeUom;
+    private String     catchWeight;
+    private String     catchWeightUom;
+    private BigDecimal averageWeight;
+    private BigDecimal varianceOver;
+    private BigDecimal varianceUnder;
+
+    public Product() {}
 
     public Product(Product value) {
         this.id = value.id;
@@ -168,128 +170,288 @@ public class Product implements Serializable {
         return this.id;
     }
 
+    public Product setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public String getItemNumber() {
         return this.itemNumber;
+    }
+
+    public Product setItemNumber(String itemNumber) {
+        this.itemNumber = itemNumber;
+        return this;
     }
 
     public String getDescription_1() {
         return this.description_1;
     }
 
+    public Product setDescription_1(String description_1) {
+        this.description_1 = description_1;
+        return this;
+    }
+
     public String getDescription_2() {
         return this.description_2;
+    }
+
+    public Product setDescription_2(String description_2) {
+        this.description_2 = description_2;
+        return this;
     }
 
     public String getUom() {
         return this.uom;
     }
 
+    public Product setUom(String uom) {
+        this.uom = uom;
+        return this;
+    }
+
     public String getPackageSize() {
         return this.packageSize;
+    }
+
+    public Product setPackageSize(String packageSize) {
+        this.packageSize = packageSize;
+        return this;
     }
 
     public String getBrand() {
         return this.brand;
     }
 
+    public Product setBrand(String brand) {
+        this.brand = brand;
+        return this;
+    }
+
     public String getBrandName() {
         return this.brandName;
+    }
+
+    public Product setBrandName(String brandName) {
+        this.brandName = brandName;
+        return this;
     }
 
     public Byte getPerishable() {
         return this.perishable;
     }
 
+    public Product setPerishable(Byte perishable) {
+        this.perishable = perishable;
+        return this;
+    }
+
     public String getSalesTaxCode() {
         return this.salesTaxCode;
+    }
+
+    public Product setSalesTaxCode(String salesTaxCode) {
+        this.salesTaxCode = salesTaxCode;
+        return this;
     }
 
     public BigDecimal getItemWeight() {
         return this.itemWeight;
     }
 
+    public Product setItemWeight(BigDecimal itemWeight) {
+        this.itemWeight = itemWeight;
+        return this;
+    }
+
     public String getItemWeightUom() {
         return this.itemWeightUom;
+    }
+
+    public Product setItemWeightUom(String itemWeightUom) {
+        this.itemWeightUom = itemWeightUom;
+        return this;
     }
 
     public String getShortDescription() {
         return this.shortDescription;
     }
 
+    public Product setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+        return this;
+    }
+
     public String getLongDescription() {
         return this.longDescription;
+    }
+
+    public Product setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
+        return this;
     }
 
     public String getReplacementItemNumber() {
         return this.replacementItemNumber;
     }
 
+    public Product setReplacementItemNumber(String replacementItemNumber) {
+        this.replacementItemNumber = replacementItemNumber;
+        return this;
+    }
+
     public String getDisplayName() {
         return this.displayName;
+    }
+
+    public Product setDisplayName(String displayName) {
+        this.displayName = displayName;
+        return this;
     }
 
     public String getUrl() {
         return this.url;
     }
 
+    public Product setUrl(String url) {
+        this.url = url;
+        return this;
+    }
+
     public String getMetaTitle() {
         return this.metaTitle;
+    }
+
+    public Product setMetaTitle(String metaTitle) {
+        this.metaTitle = metaTitle;
+        return this;
     }
 
     public String getMetaDescription() {
         return this.metaDescription;
     }
 
+    public Product setMetaDescription(String metaDescription) {
+        this.metaDescription = metaDescription;
+        return this;
+    }
+
     public Byte getIsGiftable() {
         return this.isGiftable;
+    }
+
+    public Product setIsGiftable(Byte isGiftable) {
+        this.isGiftable = isGiftable;
+        return this;
     }
 
     public Byte getIsPromotable() {
         return this.isPromotable;
     }
 
+    public Product setIsPromotable(Byte isPromotable) {
+        this.isPromotable = isPromotable;
+        return this;
+    }
+
     public Byte getIsDeleted() {
         return this.isDeleted;
+    }
+
+    public Product setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
     }
 
     public Byte getIsActive() {
         return this.isActive;
     }
 
+    public Product setIsActive(Byte isActive) {
+        this.isActive = isActive;
+        return this;
+    }
+
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
+    }
+
+    public Product setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
     }
 
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public Product setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public BigDecimal getCubicVolume() {
         return this.cubicVolume;
+    }
+
+    public Product setCubicVolume(BigDecimal cubicVolume) {
+        this.cubicVolume = cubicVolume;
+        return this;
     }
 
     public String getCubicVolumeUom() {
         return this.cubicVolumeUom;
     }
 
+    public Product setCubicVolumeUom(String cubicVolumeUom) {
+        this.cubicVolumeUom = cubicVolumeUom;
+        return this;
+    }
+
     public String getCatchWeight() {
         return this.catchWeight;
+    }
+
+    public Product setCatchWeight(String catchWeight) {
+        this.catchWeight = catchWeight;
+        return this;
     }
 
     public String getCatchWeightUom() {
         return this.catchWeightUom;
     }
 
+    public Product setCatchWeightUom(String catchWeightUom) {
+        this.catchWeightUom = catchWeightUom;
+        return this;
+    }
+
     public BigDecimal getAverageWeight() {
         return this.averageWeight;
+    }
+
+    public Product setAverageWeight(BigDecimal averageWeight) {
+        this.averageWeight = averageWeight;
+        return this;
     }
 
     public BigDecimal getVarianceOver() {
         return this.varianceOver;
     }
 
+    public Product setVarianceOver(BigDecimal varianceOver) {
+        this.varianceOver = varianceOver;
+        return this;
+    }
+
     public BigDecimal getVarianceUnder() {
         return this.varianceUnder;
+    }
+
+    public Product setVarianceUnder(BigDecimal varianceUnder) {
+        this.varianceUnder = varianceUnder;
+        return this;
     }
 
     @Override

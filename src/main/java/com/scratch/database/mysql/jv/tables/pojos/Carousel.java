@@ -25,19 +25,21 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Carousel implements Serializable {
 
-    private static final long serialVersionUID = -311312688;
+    private static final long serialVersionUID = 2124887309;
 
-    private final ULong     id;
-    private final Integer   sequence;
-    private final String    image;
-    private final String    url;
-    private final Timestamp startDate;
-    private final Timestamp endDate;
-    private final Byte      isActive;
-    private final Byte      isDeleted;
-    private final Timestamp updatedTs;
-    private final Timestamp createdTs;
-    private final String    displayText;
+    private ULong     id;
+    private Integer   sequence;
+    private String    image;
+    private String    url;
+    private Timestamp startDate;
+    private Timestamp endDate;
+    private Byte      isActive;
+    private Byte      isDeleted;
+    private Timestamp updatedTs;
+    private Timestamp createdTs;
+    private String    displayText;
+
+    public Carousel() {}
 
     public Carousel(Carousel value) {
         this.id = value.id;
@@ -83,44 +85,99 @@ public class Carousel implements Serializable {
         return this.id;
     }
 
+    public Carousel setId(ULong id) {
+        this.id = id;
+        return this;
+    }
+
     public Integer getSequence() {
         return this.sequence;
+    }
+
+    public Carousel setSequence(Integer sequence) {
+        this.sequence = sequence;
+        return this;
     }
 
     public String getImage() {
         return this.image;
     }
 
+    public Carousel setImage(String image) {
+        this.image = image;
+        return this;
+    }
+
     public String getUrl() {
         return this.url;
+    }
+
+    public Carousel setUrl(String url) {
+        this.url = url;
+        return this;
     }
 
     public Timestamp getStartDate() {
         return this.startDate;
     }
 
+    public Carousel setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
     public Timestamp getEndDate() {
         return this.endDate;
+    }
+
+    public Carousel setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
+        return this;
     }
 
     public Byte getIsActive() {
         return this.isActive;
     }
 
+    public Carousel setIsActive(Byte isActive) {
+        this.isActive = isActive;
+        return this;
+    }
+
     public Byte getIsDeleted() {
         return this.isDeleted;
+    }
+
+    public Carousel setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+        return this;
     }
 
     public Timestamp getUpdatedTs() {
         return this.updatedTs;
     }
 
+    public Carousel setUpdatedTs(Timestamp updatedTs) {
+        this.updatedTs = updatedTs;
+        return this;
+    }
+
     public Timestamp getCreatedTs() {
         return this.createdTs;
     }
 
+    public Carousel setCreatedTs(Timestamp createdTs) {
+        this.createdTs = createdTs;
+        return this;
+    }
+
     public String getDisplayText() {
         return this.displayText;
+    }
+
+    public Carousel setDisplayText(String displayText) {
+        this.displayText = displayText;
+        return this;
     }
 
     @Override

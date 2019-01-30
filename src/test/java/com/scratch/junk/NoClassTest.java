@@ -1,4 +1,4 @@
-
+package com.scratch.junk;
 
 import java.util.logging.Logger;
 import org.junit.*;
@@ -15,7 +15,7 @@ public class NoClassTest {
 
     @Test
     public void testSameness() {
-        // inner class TestObject
+        // inner class com.scratch.junk.TestObject
         TestObject x = new TestObject();
         TestObject y = new TestObject();
         TestObject z = x;

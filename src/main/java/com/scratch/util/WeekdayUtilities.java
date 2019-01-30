@@ -1,4 +1,4 @@
-package com.scratch;
+package com.scratch.util;
 
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
@@ -8,7 +8,7 @@ import java.util.SimpleTimeZone;
 import java.util.TimeZone;
 
 /**
- * <p> Title: com.managementworlds.common.util.com.scratch.WeekdayUtilities </p> <p>
+ * <p> Title: com.managementworlds.common.util.com.scratch.util.WeekdayUtilities </p> <p>
  * Description: </p> <p> Copyright: Copyright (c) 2003 </p> <p> Company:
  * Management Worlds, Inc. </p>
  * 
@@ -676,7 +676,7 @@ public class WeekdayUtilities
 
         int weekNumber = getWeekOffset(baseDate, offsetDate) + 1;
 
-        // System.out.println("com.scratch.WeekdayUtilities.getWeekNumber()");
+        // System.out.println("com.scratch.util.WeekdayUtilities.getWeekNumber()");
         // System.out.println("weekNumber = " + weekNumber);
 
         return Math.max(weekNumber, 0);
@@ -705,8 +705,8 @@ public class WeekdayUtilities
         }
 
         // Period period =
-        // new Period(com.scratch.WeekdayUtilities.getMondayFloor(baseDate).toDateMidnight(),
-        // com.scratch.WeekdayUtilities.getMondayFloor(offsetDate).toDateMidnight(),
+        // new Period(com.scratch.util.WeekdayUtilities.getMondayFloor(baseDate).toDateMidnight(),
+        // com.scratch.util.WeekdayUtilities.getMondayFloor(offsetDate).toDateMidnight(),
         // PeriodType.weeks());
 
         // return period.getWeeks();
@@ -727,7 +727,7 @@ public class WeekdayUtilities
             offsetWeek = maxWeekNumber + 1;
         }
 
-        // System.out.println("***** com.scratch.WeekdayUtilities.getWeekOffset(): "
+        // System.out.println("***** com.scratch.util.WeekdayUtilities.getWeekOffset(): "
         // + "baseYear.baseWeek.baseDay = " + baseYear + "." + baseWeek + "." + baseDay
         // + "offsetYear.offsetWeek.offsetDay = " + offsetYear + "." + offsetWeek + "." + offsetDay
         // );
@@ -763,7 +763,7 @@ public class WeekdayUtilities
 
         }
 
-        // System.out.println("***** com.scratch.WeekdayUtilities.getWeekOffset(): "
+        // System.out.println("***** com.scratch.util.WeekdayUtilities.getWeekOffset(): "
         // + "\n modified baseYear.baseWeek = " + baseYear + "." + baseWeek
         // + "\n modified offsetYear.offsetWeek = " + offsetYear + "." + offsetWeek
         // + "\n weekOffset = " + weekOffset
@@ -1133,4 +1133,4 @@ public class WeekdayUtilities
 
     }
 
-} // class com.scratch.WeekdayUtilities
+} // class com.scratch.util.WeekdayUtilities

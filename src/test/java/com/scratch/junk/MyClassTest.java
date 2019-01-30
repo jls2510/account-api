@@ -1,5 +1,6 @@
-package com.scratch;
+package com.scratch.junk;
 
+import com.scratch.junk.MyClass;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 

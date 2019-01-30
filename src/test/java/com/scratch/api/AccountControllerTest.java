@@ -1,5 +1,6 @@
-package com.scratch;
+package com.scratch.api;
 
+import com.scratch.MyResourceConfig;
 import com.scratch.database.mysql.jv.tables.pojos.Account;
 
 import org.glassfish.jersey.servlet.ServletContainer;

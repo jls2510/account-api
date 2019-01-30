@@ -1,4 +1,4 @@
-package com.scratch;
+package com.scratch.junk;
 
 import org.junit.*;
 

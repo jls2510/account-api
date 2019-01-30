@@ -1,9 +1,10 @@
+package com.scratch.util;
+
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
 import java.util.Date;
 
-import com.scratch.WeekdayUtilities;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -256,7 +257,7 @@ public class WeekdayUtilitiesTest
                     cal.set(year, month, day);
                     // System.out.println("getWeekNumber for date: " +
                     // cal.getTime() + " yields: "
-                    // + com.scratch.WeekdayUtilities.getWeekNumber(startDate,
+                    // + com.scratch.util.WeekdayUtilities.getWeekNumber(startDate,
                     // cal.getTime()));
                     // System.out.println("weekDayCounter for same date equals: "
                     // + weekDayCounter);

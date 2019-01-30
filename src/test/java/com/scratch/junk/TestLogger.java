@@ -1,4 +1,4 @@
-
+package com.scratch.junk;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

@@ -15,7 +15,13 @@ public class MyResourceConfig extends ResourceConfig {
     private static String env;
     private static final String configFile = "config.properties";
 
-    MyResourceConfig() {
+
+    public MyResourceConfig() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (Exception e) {
+            System.out.println("Can't do it!");
+        }
         register(new AbstractBinder() {
             @Override
             protected void configure() {
@@ -40,7 +46,7 @@ public class MyResourceConfig extends ResourceConfig {
                     .getContextClassLoader()
                     .getResourceAsStream(configFile));
 
-            returnValue =  config.getProperty(MyResourceConfig.env(variable));
+            returnValue = config.getProperty(MyResourceConfig.env(variable));
 
         } catch (IOException e) {
             returnValue = null;

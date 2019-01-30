@@ -1,4 +1,6 @@
-import com.scratch.Tmail;
+package com.scratch.junk;
+
+import com.scratch.junk.Tmail;
 import org.junit.Before;
 import org.junit.Test;
 

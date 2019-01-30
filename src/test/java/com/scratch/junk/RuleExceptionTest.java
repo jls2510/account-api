@@ -1,4 +1,6 @@
-import com.scratch.MyClass;
+package com.scratch.junk;
+
+import com.scratch.junk.MyClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;

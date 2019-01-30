@@ -1,10 +1,11 @@
-package com.scratch;
+package com.scratch.api;
 
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.scratch.MyResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.test.DeploymentContext;
 import org.glassfish.jersey.test.JerseyTest;
@@ -15,7 +16,7 @@ import org.glassfish.jersey.test.spi.TestContainerFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class EchoJerseyTest extends JerseyTest {
+public class EchoControllerTest extends JerseyTest {
 
     @Override
     protected TestContainerFactory getTestContainerFactory() {

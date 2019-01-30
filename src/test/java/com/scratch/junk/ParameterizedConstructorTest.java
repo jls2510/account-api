@@ -1,4 +1,6 @@
-import com.scratch.MyClass;
+package com.scratch.junk;
+
+import com.scratch.junk.MyClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -8,18 +10,19 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.runners.Parameterized.*;
 
 @RunWith(Parameterized.class)
-public class ParameterizedTest {
+public class ParameterizedConstructorTest {
 
-    // fields used together with @Parameter must be public
-    @Parameter(0)
-    public int m1;
-    @Parameter(1)
-    public int m2;
-    @Parameter(2)
-    public int result;
+    private int m1;
+    private int m2;
+    private int result;
+
+    public ParameterizedConstructorTest(int p1, int p2, int pResult) {
+        m1 = p1;
+        m2 = p2;
+        result = pResult;
+    }
 
 
     // creates the test data

@@ -6,7 +6,7 @@
 
     <groupId>groupId</groupId>
     <artifactId>account-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
     <packaging>war</packaging>
 
     <dependencies>
@@ -40,6 +40,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.46</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
         </dependency>
         <!-- Jersey -->
         <dependency>
@@ -93,19 +98,19 @@
         <dependency>
             <groupId>org.glassfish.grizzly</groupId>
             <artifactId>grizzly-http-server</artifactId>
-            <version>RELEASE</version>
+            <version>${grizzly.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-grizzly2-http</artifactId>
-            <version>RELEASE</version>
+            <version>${jersey.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-grizzly2-servlet</artifactId>
-            <version>RELEASE</version>
+            <version>${jersey.version}</version>
         </dependency>
         <!-- End Grizzly -->
         <!--Jooq-->
@@ -183,12 +188,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <version>${maven-compiler-plugin.version}</version>
             </plugin>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <attachClasses>true</attachClasses>
-                    <webXml>target/web.xml</webXml>
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
                     <webResources>
                         <resource>
                             <directory>src/main/webapp</directory>
@@ -196,6 +202,7 @@
                         </resource>
                     </webResources>
                 </configuration>
+                <version>${maven-war-plugin.version}</version>
             </plugin>
 
         </plugins>
@@ -205,13 +212,13 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <mvn-compiler-plugin.version>3.7.0</mvn-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
         <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
         <replacer.version>1.5.3</replacer.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
-        <jersey.version>2.27</jersey.version>
+        <jersey.version>2.28</jersey.version>
         <swagger.version>2.0.5</swagger.version>
         <swagger-ui.version>3.20.1</swagger-ui.version>
         <swagger-core-version>1.5.15</swagger-core-version>
@@ -221,6 +228,7 @@
         <servlet-api-version>2.5</servlet-api-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.2.71</kotlin.version>
+        <grizzly.version>2.4.4</grizzly.version>
     </properties>
 
 </project>

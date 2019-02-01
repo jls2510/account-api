@@ -5,10 +5,10 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <display-name>Account API</display-name>
+    <display-name>Devops Demo</display-name>
 
     <servlet>
-        <servlet-name>account-api</servlet-name>
+        <servlet-name>devops-demo</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
@@ -18,7 +18,7 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>account-api</servlet-name>
+        <servlet-name>devops-demo</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
 

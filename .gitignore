@@ -4,7 +4,6 @@ $ IDE stuff
 
 # Gradle local stuff
 .gradle
-gradle
 
 # Configuration stuff
 config.properties

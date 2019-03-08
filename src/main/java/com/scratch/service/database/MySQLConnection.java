@@ -4,17 +4,24 @@ import com.scratch.MyResourceConfig;
 import com.scratch.util.HttpPassThruException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jooq.Configuration;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+import org.jooq.impl.DefaultConfiguration;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import javax.net.ssl.SSLException;
 import javax.ws.rs.ext.Provider;
 
 @Provider
 public class MySQLConnection extends AbstractConnection {
+
+    private static HikariDataSource ds = null;
 
     private static final Logger log = LogManager.getLogger(MySQLConnection.class.getName());
 
@@ -53,6 +60,29 @@ public class MySQLConnection extends AbstractConnection {
         return conn;
     } // reconnect()
 
+
+    public static Configuration getJooqConfiguration(String db_name) {
+        Configuration configuration = new DefaultConfiguration();
+        if (ds == null) {
+            String url = MyResourceConfig.getConfigProperty(db_name + ".URL");
+            String userName = MyResourceConfig.getConfigProperty(db_name + ".USER");
+            String password = MyResourceConfig.getConfigProperty(db_name + ".PASSWORD");
+
+            HikariConfig config = new HikariConfig();
+            config.setJdbcUrl(url);
+            config.setUsername(userName);
+            config.setPassword(password);
+            config.setMaximumPoolSize(10);
+            config.setMinimumIdle(1);
+            config.setDriverClassName("com.mysql.jdbc.Driver");
+            ds = new HikariDataSource(config);
+        }
+        configuration.set(ds);
+        configuration.set(SQLDialect.MYSQL);
+        return configuration;
+    }
+
+
     /**
      * @throws HttpPassThruException
      */
@@ -90,7 +120,7 @@ public class MySQLConnection extends AbstractConnection {
 
         Connection conn = checkConnection(db_name);
 
-        return DSL.using(conn, SQLDialect.POSTGRES_9_4);
+        return DSL.using(conn, SQLDialect.MYSQL_5_7);
 
     } // jooq()
 
@@ -113,9 +143,9 @@ public class MySQLConnection extends AbstractConnection {
                 conn.close();
                 conn = null;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-
+        } catch (Exception e) {
+            //e.printStackTrace();
+            log.debug("Caught exception on close(), ignoring.");
         }
     }
 

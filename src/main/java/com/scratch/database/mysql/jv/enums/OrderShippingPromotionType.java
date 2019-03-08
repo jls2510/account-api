@@ -28,9 +28,7 @@ public enum OrderShippingPromotionType implements EnumType {
 
     SET_PRICE("SET_PRICE"),
 
-    PERCENT_OFF("PERCENT_OFF"),
-
-    _("");
+    PERCENT_OFF("PERCENT_OFF");
 
     private final String literal;
 

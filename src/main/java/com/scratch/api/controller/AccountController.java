@@ -43,7 +43,8 @@ public class AccountController {
         List<Account> result = new ArrayList<Account>();
 
         try {
-            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            //configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            configuration = MySQLConnection.getJooqConfiguration(db_name);
             Account account = new AccountDao(configuration).fetchOneById(ULong.valueOf((long) id));
             if (account != null) {
                 result.add(account);
@@ -75,7 +76,8 @@ public class AccountController {
         List<Account> result = new ArrayList<Account>();
 
         try {
-            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            //configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            configuration = MySQLConnection.getJooqConfiguration(db_name);
             result.add(new AccountDao(configuration).fetchOneByUsername(username));
 
         } catch (Exception e) {
@@ -97,7 +99,8 @@ public class AccountController {
         List<Account> result = new ArrayList<Account>();
 
         try {
-            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            //configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            configuration = MySQLConnection.getJooqConfiguration(db_name);
             result.addAll(new AccountDao(configuration).findAll());
         } catch (Exception e) {
 
@@ -119,7 +122,8 @@ public class AccountController {
         Account accountAsCreated = null;
 
         try {
-            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            //configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            configuration = MySQLConnection.getJooqConfiguration(db_name);
             AccountDao accountDao = new AccountDao(configuration);
 
             accountDao.insert(accountData);
@@ -152,7 +156,8 @@ public class AccountController {
         String output = account.toString();
 
         try {
-            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            //configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            configuration = MySQLConnection.getJooqConfiguration(db_name);
             AccountDao accountDao = new AccountDao(configuration);
 
             account.setId(ULong.valueOf((long) id)); // in case it's not set as received
@@ -181,7 +186,8 @@ public class AccountController {
         System.out.println("AccountController.deleteById()");
 
         try {
-            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            //configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
+            configuration = MySQLConnection.getJooqConfiguration(db_name);
             AccountDao accountDao = new AccountDao(configuration);
 
             if (id > 0) {

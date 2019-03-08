@@ -63,7 +63,7 @@ public class MySQLConnection extends AbstractConnection {
             config.setPassword(password);
             config.setMaximumPoolSize(10);
             config.setMinimumIdle(1);
-            config.setDriverClassName("com.mysql.jdbc.Driver");
+            config.setDriverClassName("com.mysql.cj.jdbc.Driver");
             ds = new HikariDataSource(config);
             hikariDataSources.put(db_name, ds);
         }

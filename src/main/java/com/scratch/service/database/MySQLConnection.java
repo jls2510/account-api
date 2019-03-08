@@ -40,7 +40,7 @@ public class MySQLConnection extends AbstractConnection {
         HikariDataSource ds = getDataSource(db_name);
 
         configuration.set(ds);
-        configuration.set(SQLDialect.MYSQL);
+        configuration.set(SQLDialect.MYSQL_5_7);
         return configuration;
     }
 

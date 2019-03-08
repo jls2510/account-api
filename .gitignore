@@ -1,7 +1,15 @@
 
+$ IDE stuff
 .idea
 
+# Gradle local stuff
+.gradle
+gradle
+
+# Configuration stuff
 config.properties
+
+# Temporary stuff
 *.log
 *.log.lck
 

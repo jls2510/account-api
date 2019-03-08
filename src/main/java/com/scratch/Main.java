@@ -24,7 +24,7 @@ class Main {
      * @return Grizzly HTTP server.
      */
     private static HttpServer startServer() {
-        // createNewOpportunity a resource config that scans for JAX-RS resources and providers
+        // createNewOpportunity a resource getConfigProperty that scans for JAX-RS resources and providers
         // in com.win package
 
         // set a flag so we know that we are running under grizzly

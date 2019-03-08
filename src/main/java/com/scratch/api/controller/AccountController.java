@@ -2,27 +2,19 @@ package com.scratch.api.controller;
 
 import com.scratch.database.mysql.jv.tables.pojos.Account;
 import com.scratch.database.mysql.jv.tables.daos.AccountDao;
-import com.scratch.database.mysql.jv.tables.records.AccountRecord;
 import com.scratch.service.database.MySQLConnection;
 import com.scratch.util.JsonResponse;
 import com.scratch.util.ExceptionJsonResponse;
-import com.scratch.util.HttpPassThruException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.glassfish.grizzly.http.server.Request;
 import org.jooq.Configuration;
 import org.jooq.SQLDialect;
-import org.jooq.impl.DSL;
 import org.jooq.impl.DefaultConfiguration;
 import org.jooq.types.ULong;
 
 import java.sql.Connection;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import javax.inject.Inject;
-import javax.inject.Provider;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -36,15 +28,7 @@ import javax.ws.rs.core.Response;
 public class AccountController {
 
     private static Configuration configuration;
-    private static MySQLConnection msc;
-
-    static {
-
-        try {
-            msc = new MySQLConnection();
-        } catch (Exception e) {
-        }
-    }
+    private static String db_name = "jv_b2c";
 
     private Logger log = LogManager.getLogger(AccountController.class.getName());
 
@@ -59,7 +43,7 @@ public class AccountController {
         List<Account> result = new ArrayList<Account>();
 
         try {
-            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
             Account account = new AccountDao(configuration).fetchOneById(ULong.valueOf((long) id));
             if (account != null) {
                 result.add(account);
@@ -91,7 +75,7 @@ public class AccountController {
         List<Account> result = new ArrayList<Account>();
 
         try {
-            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
             result.add(new AccountDao(configuration).fetchOneByUsername(username));
 
         } catch (Exception e) {
@@ -113,7 +97,7 @@ public class AccountController {
         List<Account> result = new ArrayList<Account>();
 
         try {
-            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
             result.addAll(new AccountDao(configuration).findAll());
         } catch (Exception e) {
 
@@ -130,12 +114,12 @@ public class AccountController {
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Account accountData) {
-        System.out.println("AccountController.create()");
+        log.debug("AccountController.create()");
 
         Account accountAsCreated = null;
 
         try {
-            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
             AccountDao accountDao = new AccountDao(configuration);
 
             accountDao.insert(accountData);
@@ -168,7 +152,7 @@ public class AccountController {
         String output = account.toString();
 
         try {
-            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
             AccountDao accountDao = new AccountDao(configuration);
 
             account.setId(ULong.valueOf((long) id)); // in case it's not set as received
@@ -197,7 +181,7 @@ public class AccountController {
         System.out.println("AccountController.deleteById()");
 
         try {
-            configuration = new DefaultConfiguration().set(msc.getConnection()).set(SQLDialect.MYSQL_5_7);
+            configuration = new DefaultConfiguration().set(MySQLConnection.getConnection(db_name)).set(SQLDialect.MYSQL_5_7);
             AccountDao accountDao = new AccountDao(configuration);
 
             if (id > 0) {

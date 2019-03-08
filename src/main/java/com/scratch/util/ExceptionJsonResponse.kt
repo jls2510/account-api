@@ -34,7 +34,7 @@ class ExceptionJsonResponse : ExceptionMapper<Exception> {
         } else if (e is DataAccessException) {
             log.debug("e is a DataAccessException")
             jsonResponse.apply {
-                message = MyResourceConfig.config("error_message") + " " + " Could not connect to the Postgres Database. Please try again shortly."
+                message = MyResourceConfig.getConfigProperty("error_message") + " " + " Could not connect to the Postgres Database. Please try again shortly."
                 errorCode = 500.toString()
             }
         } else if (e is RuntimeException) {

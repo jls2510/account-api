@@ -1,5 +1,7 @@
 package com.scratch;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -14,6 +16,8 @@ import java.util.Properties;
 public class MyResourceConfig extends ResourceConfig {
     private static String env;
     private static final String configFile = "config.properties";
+
+    private static final Logger log = LogManager.getLogger(MyResourceConfig.class.getName());
 
 
     public MyResourceConfig() {
@@ -36,7 +40,7 @@ public class MyResourceConfig extends ResourceConfig {
     }
 
     /*return the environment variable*/
-    public static String config(String variable) {
+    public static String getConfigProperty(String variable) {
         //return context.getInitParameter(getEnv(variable));
         Properties config = new Properties();
         String returnValue;
@@ -46,16 +50,20 @@ public class MyResourceConfig extends ResourceConfig {
                     .getContextClassLoader()
                     .getResourceAsStream(configFile));
 
-            returnValue = config.getProperty(MyResourceConfig.env(variable));
+            returnValue = config.getProperty(MyResourceConfig.getEnvironment() + "." + variable);
 
         } catch (IOException e) {
             returnValue = null;
         }
 
-        return returnValue;
-    }
+        log.debug("variable = " + variable);
+        log.debug("returnValue = " + returnValue);
 
-    private static String env(String variable) {
+        return returnValue;
+    } // getConfigProperty()
+
+
+    private static String getEnvironment() {
         String hostname;
         String environment;
 
@@ -94,7 +102,9 @@ public class MyResourceConfig extends ResourceConfig {
             }
         }
 
-        return environment + "." + variable;
-    }
+        log.debug("environment = " + environment);
+
+        return environment;
+    } // getEnvironment()
 
 }

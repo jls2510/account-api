@@ -5,5 +5,5 @@ import org.jooq.DSLContext;
 
 public abstract class AbstractConnection {
 
-    public abstract DSLContext jooq() throws HttpPassThruException;
+    public abstract DSLContext jooq(String db_name) throws HttpPassThruException;
 }

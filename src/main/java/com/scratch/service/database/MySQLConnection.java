@@ -8,71 +8,75 @@ import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import javax.ws.rs.ext.Provider;
 
 @Provider
 public class MySQLConnection extends AbstractConnection {
 
-
     private static final Logger log = LogManager.getLogger(MySQLConnection.class.getName());
 
-    private static final String url = MyResourceConfig.config("MYSQL_SERVER");
-    private static final String userName = MyResourceConfig.config("MYSQL_USER");
-    private static final String password = MyResourceConfig.config("MYSQL_PASSWORD");
-
-    private Connection conn = null;
-    private LocalDateTime connTimestamp = null;
+    private static volatile HashMap<String, Connection> connections = new HashMap<String, Connection>();
+    private static volatile HashMap<String, LocalDateTime> connectionTimestamps = new HashMap<String, LocalDateTime>();
 
     /**
-     *
      * @throws HttpPassThruException
      */
-    public MySQLConnection() throws HttpPassThruException {
-        checkConnection();
+    private MySQLConnection() throws HttpPassThruException {
+
     }
 
     /**
-     *
      * @throws HttpPassThruException
      */
-    private void reconnect() throws HttpPassThruException {
-        log.debug("MySQLConnection.reconnect().");
+    private static synchronized Connection reconnect(String db_name) throws HttpPassThruException {
+        //System.out.println("MySQLConnection.reconnect(" + db_name + ").");
+        Connection conn;
         try {
+            String url = MyResourceConfig.getConfigProperty(db_name + ".URL");
+            String userName = MyResourceConfig.getConfigProperty(db_name + ".USER");
+            String password = MyResourceConfig.getConfigProperty(db_name + ".PASSWORD");
             conn = DriverManager.getConnection(url, userName, password);
-            connTimestamp = LocalDateTime.now();
+            connections.put(db_name, conn);
+            connectionTimestamps.put(db_name, LocalDateTime.now());
+            log.debug("connection created.");
         } catch (SQLException e) {
+            log.debug("MySQLConnection.reconnect(" + db_name + ") THREW SQLException.");
             conn = null;
-            log.debug(e.getMessage());
-            //e.printStackTrace()
-            String errorMessage = MyResourceConfig.config("error_message") + " Could not connect to the Database. Please try again shortly.";
+            //log.debug(e.getMessage());
+            e.printStackTrace();
+            String errorMessage = MyResourceConfig.getConfigProperty("error_message") + " Could not connect to the Database. Please try again shortly.";
             throw new HttpPassThruException(errorMessage);
         }
+        return conn;
     } // reconnect()
 
     /**
-     *
      * @throws HttpPassThruException
      */
-    private void checkConnection() throws HttpPassThruException {
+    private static synchronized Connection checkConnection(String db_name) throws HttpPassThruException {
+        //System.out.println("MySQLConnection.checkConnection(" + db_name + ").");
         // validate connection
+        Connection conn = connections.get(db_name);
+        LocalDateTime connTimestamp = connectionTimestamps.get(db_name);
         try {
             if (conn == null || connTimestamp == null) {
                 log.debug("conn is null");
-                reconnect();
+                conn = reconnect(db_name);
             } else if (connTimestamp.plusSeconds(60).isBefore(LocalDateTime.now()) && !(conn.isValid(3))) {
                 conn.close();
 
                 log.debug("conn is not valid");
-                reconnect();
+                conn = reconnect(db_name);
             }
         } catch (SQLException e) {
-            String errorMessage = MyResourceConfig.config("error_message") + " Could not connect to the Database. Please try again shortly.";
+            String errorMessage = MyResourceConfig.getConfigProperty("error_message") + " Could not connect to the Database. Please try again shortly.";
             throw new HttpPassThruException(errorMessage);
         }
+
+        return conn;
     } // checkConnection()
 
 
@@ -80,24 +84,75 @@ public class MySQLConnection extends AbstractConnection {
     /**
      *
      */
-    public DSLContext jooq() throws HttpPassThruException {
+    public DSLContext jooq(String db_name) throws HttpPassThruException {
 
-        log.debug("MySQLConnection.jooq()");
+        log.debug("MySQLConnection.jooq(" + db_name + ")");
 
-        checkConnection();
+        Connection conn = checkConnection(db_name);
 
         return DSL.using(conn, SQLDialect.POSTGRES_9_4);
 
     } // jooq()
 
     /**
-     *
      * @return
      */
-    public Connection getConnection() throws HttpPassThruException {
-        checkConnection();
+    public static Connection getConnection(String db_name) throws HttpPassThruException {
+
+        //System.out.println("MySQLConnection.getConnection(" + db_name + ").");
+
+        Connection conn = checkConnection(db_name);
+
         return conn;
     }
 
+    public static void closeConnection(Connection conn) {
+        //System.out.println("MySQLConnection.closeConnection().");
+        try {
+            if (null != conn) {
+                conn.close();
+                conn = null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    public static void closeResultset(ResultSet rs) {
+        try {
+            if (null != rs) {
+                rs.close();
+                rs = null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    public static void closePreparedStatement(PreparedStatement pstmt) {
+        try {
+            if (null != pstmt) {
+                pstmt.close();
+                pstmt = null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    public static void closeStatement(Statement statement) {
+        try {
+            if (statement != null) {
+                statement.close();
+                statement = null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
 }
 

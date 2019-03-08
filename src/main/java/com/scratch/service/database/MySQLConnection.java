@@ -13,20 +13,15 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.jooq.impl.DefaultConfiguration;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.HashMap;
-import javax.net.ssl.SSLException;
 import javax.ws.rs.ext.Provider;
 
 @Provider
 public class MySQLConnection extends AbstractConnection {
 
-    private static HikariDataSource ds = null;
-
     private static final Logger log = LogManager.getLogger(MySQLConnection.class.getName());
 
-    private static volatile HashMap<String, Connection> connections = new HashMap<String, Connection>();
-    private static volatile HashMap<String, LocalDateTime> connectionTimestamps = new HashMap<String, LocalDateTime>();
+    private static volatile HashMap<String, HikariDataSource> hikariDataSources = new HashMap<String, HikariDataSource>();
 
     /**
      * @throws HttpPassThruException
@@ -36,33 +31,27 @@ public class MySQLConnection extends AbstractConnection {
     }
 
     /**
-     * @throws HttpPassThruException
+     *
+     * @param db_name
+     * @return
      */
-    private static synchronized Connection reconnect(String db_name) throws HttpPassThruException {
-        //System.out.println("MySQLConnection.reconnect(" + db_name + ").");
-        Connection conn;
-        try {
-            String url = MyResourceConfig.getConfigProperty(db_name + ".URL");
-            String userName = MyResourceConfig.getConfigProperty(db_name + ".USER");
-            String password = MyResourceConfig.getConfigProperty(db_name + ".PASSWORD");
-            conn = DriverManager.getConnection(url, userName, password);
-            connections.put(db_name, conn);
-            connectionTimestamps.put(db_name, LocalDateTime.now());
-            log.debug("connection created.");
-        } catch (SQLException e) {
-            log.debug("MySQLConnection.reconnect(" + db_name + ") THREW SQLException.");
-            conn = null;
-            //log.debug(e.getMessage());
-            e.printStackTrace();
-            String errorMessage = MyResourceConfig.getConfigProperty("error_message") + " Could not connect to the Database. Please try again shortly.";
-            throw new HttpPassThruException(errorMessage);
-        }
-        return conn;
-    } // reconnect()
-
-
     public static Configuration getJooqConfiguration(String db_name) {
         Configuration configuration = new DefaultConfiguration();
+        HikariDataSource ds = getDataSource(db_name);
+
+        configuration.set(ds);
+        configuration.set(SQLDialect.MYSQL);
+        return configuration;
+    }
+
+    /**
+     *
+     * @param db_name
+     * @return
+     */
+    private static synchronized HikariDataSource initDataSource(String db_name) {
+        HikariDataSource ds = hikariDataSources.get(db_name);
+
         if (ds == null) {
             String url = MyResourceConfig.getConfigProperty(db_name + ".URL");
             String userName = MyResourceConfig.getConfigProperty(db_name + ".USER");
@@ -74,41 +63,14 @@ public class MySQLConnection extends AbstractConnection {
             config.setPassword(password);
             config.setMaximumPoolSize(10);
             config.setMinimumIdle(1);
-            config.setDriverClassName("com.mysql.jdbc.Driver");
+            //config.setDriverClassName("com.mysql.jdbc.Driver"); no longer needed
             ds = new HikariDataSource(config);
-        }
-        configuration.set(ds);
-        configuration.set(SQLDialect.MYSQL);
-        return configuration;
-    }
-
-
-    /**
-     * @throws HttpPassThruException
-     */
-    private static synchronized Connection checkConnection(String db_name) throws HttpPassThruException {
-        //System.out.println("MySQLConnection.checkConnection(" + db_name + ").");
-        // validate connection
-        Connection conn = connections.get(db_name);
-        LocalDateTime connTimestamp = connectionTimestamps.get(db_name);
-        try {
-            if (conn == null || connTimestamp == null) {
-                log.debug("conn is null");
-                conn = reconnect(db_name);
-            } else if (connTimestamp.plusSeconds(60).isBefore(LocalDateTime.now()) && !(conn.isValid(3))) {
-                conn.close();
-
-                log.debug("conn is not valid");
-                conn = reconnect(db_name);
-            }
-        } catch (SQLException e) {
-            String errorMessage = MyResourceConfig.getConfigProperty("error_message") + " Could not connect to the Database. Please try again shortly.";
-            throw new HttpPassThruException(errorMessage);
+            hikariDataSources.put(db_name, ds);
         }
 
-        return conn;
-    } // checkConnection()
+        return ds;
 
+    } // initDataSource()
 
     @Override
     /**
@@ -116,73 +78,71 @@ public class MySQLConnection extends AbstractConnection {
      */
     public DSLContext jooq(String db_name) throws HttpPassThruException {
 
+        DSLContext returnValue = null;
         log.debug("MySQLConnection.jooq(" + db_name + ")");
 
-        Connection conn = checkConnection(db_name);
+        Connection conn = null;
+        HikariDataSource ds = getDataSource(db_name);
+        try {
+            conn = ds.getConnection();
+        } catch (Exception e) {
 
-        return DSL.using(conn, SQLDialect.MYSQL_5_7);
+        }
+
+        if (conn != null) {
+
+            returnValue = DSL.using(conn, SQLDialect.MYSQL_5_7);
+        }
+
+        return returnValue;
 
     } // jooq()
 
     /**
      * @return
      */
-    public static Connection getConnection(String db_name) throws HttpPassThruException {
-
+    public static HikariDataSource getDataSource(String db_name) {
         //System.out.println("MySQLConnection.getConnection(" + db_name + ").");
 
-        Connection conn = checkConnection(db_name);
+        HikariDataSource ds = hikariDataSources.get(db_name);
 
+        if (ds == null) {
+            ds = initDataSource(db_name);
+        }
+
+        return ds;
+    }
+
+    /**
+     *
+     * @param db_name
+     */
+    public static void closeDataSource(String db_name) {
+        //System.out.println("MySQLConnection.closeDataSource().");
+        HikariDataSource ds = getDataSource(db_name);
+        try {
+            if (ds != null) {
+                ds.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     *
+     * @param db_name
+     * @return
+     */
+    public static Connection getConnection(String db_name) {
+        Connection conn = null;
+        try {
+            conn = getDataSource(db_name).getConnection();
+        } catch (Exception e) {
+
+        }
         return conn;
     }
 
-    public static void closeConnection(Connection conn) {
-        //System.out.println("MySQLConnection.closeConnection().");
-        try {
-            if (null != conn) {
-                conn.close();
-                conn = null;
-            }
-        } catch (Exception e) {
-            //e.printStackTrace();
-            log.debug("Caught exception on close(), ignoring.");
-        }
-    }
-
-    public static void closeResultset(ResultSet rs) {
-        try {
-            if (null != rs) {
-                rs.close();
-                rs = null;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-    }
-
-    public static void closePreparedStatement(PreparedStatement pstmt) {
-        try {
-            if (null != pstmt) {
-                pstmt.close();
-                pstmt = null;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-    }
-
-    public static void closeStatement(Statement statement) {
-        try {
-            if (statement != null) {
-                statement.close();
-                statement = null;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-    }
 }
-

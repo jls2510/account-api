@@ -1,20 +1,22 @@
 package com.scratch.service.database;
 
-import java.sql.Connection;
 import java.sql.Statement;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class MySQLConnectionTest {
-    private static Connection connection;
+    private static HikariDataSource hikariDataSource;
+
+    private static final String db_name = "jv_b2c";
 
     @BeforeClass
     public static void beforeClass() {
         try {
-            connection = MySQLConnection.getConnection("jv_b2c");
+            hikariDataSource = MySQLConnection.getDataSource(db_name);
         } catch (Exception e) {
 
         }
@@ -23,7 +25,7 @@ public class MySQLConnectionTest {
     @AfterClass
     public static void afterClass() {
         try {
-            MySQLConnection.closeConnection(connection);
+            MySQLConnection.closeDataSource(db_name);
         } catch (Exception e) {
 
         }
@@ -32,16 +34,12 @@ public class MySQLConnectionTest {
     @Test
     public void closeStatementShouldCloseStatement() {
         try {
-            Statement statement = connection.createStatement();
-            MySQLConnection.closeStatement(statement);
+            Statement statement = hikariDataSource.getConnection().createStatement();
+            statement.close();
             Assert.assertTrue(statement.isClosed());
         } catch (Exception e) {
             Assert.fail();
         }
     }
 
-    @Test
-    public void closeStatementWithNullShouldNotThrow() {
-        MySQLConnection.closeStatement(null);
-    }
 }
